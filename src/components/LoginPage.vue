@@ -1,7 +1,6 @@
 <template>
   <div class="loginComponent" >
     <img alt="Vue logo" src="./../assets/nzpmclogo.jpg">
-    <!-- <h1>{{ msg }}</h1> -->
     <ul>
       <li>Username</li>
       <input v-model="username" placeholder="">
@@ -20,9 +19,6 @@
 <script>
 export default {
   name: 'LoginPage',
-  props: {
-    msg: String
-  },
   methods: {
       proceed() {
           alert("You have now logged in")
@@ -39,6 +35,7 @@ img {
     background-color: rosybrown;
     width: 90%;
     margin: auto;
+    margin-bottom: 2.5%;
 }
 h1 {
     background-color: palegreen;
@@ -55,23 +52,21 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  margin-right: 5%;
-  margin-bottom: 5%;
-  margin-left: 5%;
-  background-color: lightblue;
+  justify-content: space-evenly;
+  margin-right: 12.5%;
+  margin-bottom: 3%;
   height: 7%;
+
 }
 li {
   display: inline-block;
   margin: 0 10px;
-  background-color: lightcoral;
   font-weight: normal;
   font-family: monospace;
   font-size: 200%;
+
+  margin-left: 7%;
 }
-/* a {
-  color: #42b983;
-} */
 .loginComponent {
     background-color: #ecf0f1;
     height: 500px;
@@ -85,10 +80,11 @@ button {
     color: #ecf0f1;
     font-weight: bold;
     font-family: monospace;
-    font-size: 150%;
+    font-size: 175%;
     border: none;
-    width: 6rem;
-    height: 3rem;
+    width: 7rem;
+    height: 3.5rem;
+    margin-top: 8%;
     
 }
 button:hover {
@@ -97,15 +93,17 @@ button:hover {
 .btnContainer {
     display: flex;
     justify-content: flex-end;
-    background-color: yellow;
-    margin-right: 20%;
+    margin-right: 17.0%;
     margin-bottom: 5%;
+    
 
 }
 input {
     background-color: #c4c4c4;
     border: none;
     width: 50%;
+    font-size: 150%;
+    font-family: monospace;
 
 }
 </style>
