@@ -1,25 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="Welcome Page">
     <h1>{{ msg }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
+    <section><iframe width="560" height="315" src="https://www.youtube.com/embed/Des5TrztWRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+    <button class="button">I'm Ready</button>
+    <h3>Add other external links here</h3>
     <ul>
       <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
       <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
@@ -27,6 +13,7 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    
   </div>
 </template>
 
@@ -41,18 +28,55 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.button{
+  margin-top:20px;
+  background-color: #189a87;; /* Green */
+  border: none;
+  color: white;
+  padding: 20px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 550;
+  transition-duration: 0.4s;
+}
+.button:hover{
+  background-color:  #6ae8cb;
+  color: white;
+}
+
+button:active {
+  background-color: #9bd49d;
+  box-shadow: 0 5px rgb(43, 129, 101);
+  transform: translateY(4px);
+}
+
+h1{
+  margin: 0px;
+  font-weight:1000;
+  font-size: 30px;
+  margin-bottom: 40px;
+
+  font-style: italic;
+}
+
 h3 {
   margin: 40px 0 0;
+  margin-bottom: 0;
 }
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 10;
 }
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 5px 5px;
+  margin-bottom: 20px;
 }
 a {
-  color: #42b983;
+  color: #d0e0d8;
 }
+
 </style>

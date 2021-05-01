@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img class="logo" alt="NZPMC logo" src="./assets/logo-cropped.png" width="400">
+    <HelloWorld msg="Welcome to New Zealand Physics and Mathematics Competition 2021!"/>
   </div>
 </template>
 
@@ -17,12 +17,19 @@ export default {
 </script>
 
 <style>
+.logo{
+  margin-top: 0px;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Helvetica , Helvetica;
+  font-weight: 200;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #cfeade;
+  margin-top: 0px;
+  margin-bottom: 0%;
+  background:  #0fb5a2;
 }
+
 </style>
