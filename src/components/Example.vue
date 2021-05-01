@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <h1>App Running!</h1>
   </div>
 </template>
 
