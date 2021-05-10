@@ -1,5 +1,16 @@
 <template>
     <div class="exam">
-        <h1>This is an exam page</h1>
+        <AnswerList />
     </div>
 </template>
+
+<script>
+import AnswerList from './../components/AnswerList.vue'
+
+export default {
+    setup() {},
+    components: {
+        AnswerList,
+    },
+}
+</script>
