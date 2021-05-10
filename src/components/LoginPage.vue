@@ -1,18 +1,56 @@
 <template>
-    <div class="loginComponent">
-        <img alt="Vue logo" src="./../assets/nzpmclogo.jpg" />
-        <ul>
-            <li>Username</li>
-            <input v-model="username" placeholder="" />
-        </ul>
-        <ul>
-            <li>Password</li>
-            <input v-model="password" placeholder="" type="password" />
-        </ul>
-        <div class="btnContainer">
-            <button v-on:click="proceed">Login</button>
-        </div>
-    </div>
+    <v-container
+        style="background-color: #ecf0f1; max-width: 500px"
+        class="mt-16"
+    >
+        <v-row>
+            <img alt="Vue logo" src="./../assets/nzpmclogo.jpg" />
+        </v-row>
+        <v-row align="center" justify="center" dense class="mt-4">
+            <v-col sm="4" align="end" justify="center" class="mb-3">
+                <p>Username</p>
+            </v-col>
+            <v-col sm="8" align="center" justify="center">
+                <v-text-field
+                    v-model="username"
+                    placeholder="Enter your username here"
+                    label="Username"
+                    outlined
+                    class="mr-10"
+                    dense
+                />
+            </v-col>
+        </v-row>
+        <v-row align="center" justify="center" dense>
+            <v-col sm="4" align="end" justify="center" class="mb-3">
+                <p>Password</p>
+            </v-col>
+            <v-row>
+            <v-col sm="8" align="center" justify="center">
+                <v-text-field
+                    v-model="password"
+                    placeholder="Enter your password here"
+                    label="Password"
+                    type="password"
+                    outlined
+                    class="mr-10"
+                    dense
+                />
+            </v-col>
+        </v-row>
+        <v-row align="center" justify="center">
+            <v-col sm="12" align="end" justify="center">
+                <v-btn
+                    v-on:click="proceed"
+                    align="center"
+                    justify="center"
+                    class="mr-10"
+                    x-large
+                    >Login</v-btn
+                >
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
