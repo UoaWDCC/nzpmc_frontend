@@ -6,11 +6,16 @@
                 v-for="answer in answers"
                 :key="answer"
             >
-                <SingleAnswer :ans="answer.text" />
+                <SingleAnswer
+                    :ans="answer.text"
+                    :isSelected="answer.isSelected"
+                    :answerID="answer.id"
+                    :IDRetriever="selectOneAnswer"
+                />
             </div>
 
             <v-btn
-                color="#385F73"
+                color="#03a9f5"
                 style="max-width: 100%; color: white"
                 x-large
             >
@@ -27,14 +32,28 @@ export default {
     components: {
         SingleAnswer,
     },
+    methods: {
+        selectOneAnswer(number) {
+            this.currentAnswerID = number
+
+            for (let i = 0; i < this.answers.length; i++) {
+                if (this.answers[i].id === number) {
+                    this.answers[i].isSelected = true
+                } else {
+                    this.answers[i].isSelected = false
+                }
+            }
+        },
+    },
     data() {
         return {
             answers: [
-                { text: 'First Answer' },
-                { text: 'Second Answer' },
-                { text: 'Third Answer' },
-                { text: 'Fourth Answer' },
+                { text: 'First Answer', isSelected: false, id: 1 },
+                { text: 'Second Answer', isSelected: false, id: 2 },
+                { text: 'Third Answer', isSelected: false, id: 3 },
+                { text: 'Fourth Answer', isSelected: false, id: 4 },
             ],
+            currentAnswerID: null,
         }
     },
 }
