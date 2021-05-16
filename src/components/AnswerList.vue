@@ -3,23 +3,21 @@
         <v-container style="background-color: #ecf0f1; max-width: 400px">
             <div
                 style="padding-bottom: 20px"
-                v-for="answer in answers"
-                :key="answer"
+                v-for="option in optionsList"
+                :key="option"
             >
                 <SingleAnswer
-                    :ans="answer.text"
-                    :isSelected="answer.isSelected"
-                    :answerID="answer.id"
-                    :IDRetriever="selectOneAnswer"
+                    :ans="option.text"
+                    :optionID="option.id"
+                    :selectedID="currentOptionID"
+                    @selectanswer="selectOneAnswer"
                 />
             </div>
-
             <v-btn
-                color="#03a9f5"
-                style="max-width: 100%; color: white"
+                style="max-width: 100%; color: white; background-color: #03a9f5"
                 x-large
             >
-                Submit
+                Next
             </v-btn>
         </v-container>
     </div>
@@ -34,26 +32,15 @@ export default {
     },
     methods: {
         selectOneAnswer(number) {
-            this.currentAnswerID = number
-
-            for (let i = 0; i < this.answers.length; i++) {
-                if (this.answers[i].id === number) {
-                    this.answers[i].isSelected = true
-                } else {
-                    this.answers[i].isSelected = false
-                }
-            }
+            this.currentOptionID = number
         },
+    },
+    props: {
+        optionsList: Object,
     },
     data() {
         return {
-            answers: [
-                { text: 'First Answer', isSelected: false, id: 1 },
-                { text: 'Second Answer', isSelected: false, id: 2 },
-                { text: 'Third Answer', isSelected: false, id: 3 },
-                { text: 'Fourth Answer', isSelected: false, id: 4 },
-            ],
-            currentAnswerID: null,
+            currentOptionID: null,
         }
     },
 }

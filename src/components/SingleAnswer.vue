@@ -3,14 +3,14 @@
         <v-card
             dark
             style="max-width: 350px"
-            v-on:click="IDRetriever(answerID)"
-            :color="isSelected ? '#03a9f5' : '#385F73'"
+            @click="selectanswer"
+            :color="selectedID === optionID ? '#03a9f5' : '#385F73'"
         >
             <v-row>
                 <v-col sm="8">
                     <h4 style="margin: 1rem">{{ ans }}</h4>
                 </v-col>
-                <v-col align="center" sm="4" v-if="isSelected">
+                <v-col align="center" sm="4" v-if="selectedID === optionID">
                     <v-icon dense style="margin: 1rem" class="justify-center">
                         mdi-check-circle
                     </v-icon>
@@ -24,9 +24,13 @@
 export default {
     props: {
         ans: String,
-        isSelected: Boolean,
-        answerID: Number,
-        IDRetriever: Function,
+        selectedID: Number,
+        optionID: Number,
+    },
+    methods: {
+        selectanswer() {
+            this.$emit('selectanswer', this.optionID)
+        },
     },
 }
 </script>
