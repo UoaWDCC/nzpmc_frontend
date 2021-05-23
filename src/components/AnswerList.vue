@@ -3,7 +3,7 @@
         <div
             style="padding-bottom: 20px"
             v-for="option in optionsList"
-            :key="option"
+            :key="option.id"
         >
             <SingleAnswer
                 :ans="option.text"
