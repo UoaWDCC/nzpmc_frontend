@@ -1,11 +1,13 @@
 <template>
     <div class="exam">
+        <Sidebar />
         <AnswerList :optionsList="answers" />
     </div>
 </template>
 
 <script>
 import AnswerList from './../components/AnswerList.vue'
+import Sidebar from './../components/Sidebar.vue'
 
 export default {
     setup() {},
