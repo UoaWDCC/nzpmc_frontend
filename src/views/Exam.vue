@@ -21,6 +21,7 @@
                 <v-container fluid>
                     <v-row>
                         <v-col cols="8">
+                            <!-- to be changed to single question component -->
                             <v-sheet
                                 class="d-flex align-center justify-center"
                                 height="90vh"
