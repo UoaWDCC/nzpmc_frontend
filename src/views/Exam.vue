@@ -7,12 +7,13 @@
 
 <script>
 import AnswerList from './../components/AnswerList.vue'
-import Sidebar from './../components/Sidebar.vue'
+import Sidebar from '../components/Sidebar'
 
 export default {
     setup() {},
     components: {
         AnswerList,
+        Sidebar,
     },
     data() {
         return {
