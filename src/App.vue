@@ -3,7 +3,7 @@
         <router-link to="/">Login</router-link> |
         <router-link to="/welcome">Welcome</router-link> |
         <router-link to="/exam">Exam</router-link> |
-        <router-link to="/finished">Finished</router-link>
+        <router-link to="/submission">Submissions</router-link>
         <router-view />
     </div>
 </template>
@@ -26,5 +26,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    height: 100vh;
 }
 </style>
