@@ -1,16 +1,19 @@
 <template>
     <div class="exam">
         <AnswerList :optionsList="answers" />
+        <SingleQuestion />
     </div>
 </template>
 
 <script>
 import AnswerList from './../components/AnswerList.vue'
+import SingleQuestion from './../components/SingleQuestion.vue'
 
 export default {
     setup() {},
     components: {
         AnswerList,
+        SingleQuestion,
     },
     data() {
         return {
