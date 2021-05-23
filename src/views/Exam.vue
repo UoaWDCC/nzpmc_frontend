@@ -51,11 +51,13 @@
 
 <script>
 import AnswerList from './../components/AnswerList.vue'
+import SubmissionConfirmation from './../components/SubmissionConfirmation.vue'
 
 export default {
     setup() {},
     components: {
         AnswerList,
+        SubmissionConfirmation,
     },
     data() {
         return {
