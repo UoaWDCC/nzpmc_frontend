@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "core-js": "^3.12.1",
+        "i": "^0.3.6",
         "vue": "^2.6.11",
         "vue-router": "^3.5.1",
         "vuetify": "^2.4.0"
