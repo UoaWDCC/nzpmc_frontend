@@ -54,6 +54,16 @@
     </div>
 </template>
 
+<script>
+export default {
+    methods: {
+        redirectToWelcome() {
+            this.$router.push({ path: '/welcome' })
+        },
+    },
+}
+</script>
+
 <style scoped>
 .login {
     margin-top: 5rem;
