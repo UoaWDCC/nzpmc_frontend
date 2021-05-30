@@ -26,8 +26,9 @@
                                 class="d-flex align-center justify-center"
                                 height="90vh"
                                 elevation="3"
-                                ><SingleQuestion
-                            /></v-sheet>
+                            >
+                                <SingleQuestion :question="question.text" />
+                            </v-sheet>
                         </v-col>
                         <v-col>
                             <v-card
@@ -61,6 +62,9 @@ export default {
     },
     data() {
         return {
+            question: {
+                text: '$$\\frac{a}{b}$$',
+            },
             answers: [
                 { text: 'First Answer', id: 1 },
                 { text: 'Second Answer', id: 2 },

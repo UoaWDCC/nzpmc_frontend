@@ -5,7 +5,7 @@
                 <v-card style="background-color: #ecf0f1; width: 800px">
                     <v-card-title align="start"> Question 1 </v-card-title>
                     <v-card-text align="start" style="color: black">
-                        <latex :content="someVariable" />
+                        <latex :content="question" />
                     </v-card-text>
                 </v-card>
             </v-row>
@@ -28,10 +28,8 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            someVariable: String.raw`What is the area of the circle shown below?`,
-        }
+    props: {
+        question: String,
     },
 }
 </script>
