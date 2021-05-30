@@ -1,15 +1,7 @@
 <template>
     <div class="exam">
         <v-app>
-            <v-navigation-drawer app>
-                <!-- to be changed to Sidebar component-->
-                <v-sheet
-                    class="d-flex align-center justify-center"
-                    height="100vh"
-                    elevation="3"
-                    >Sidebar Component</v-sheet
-                >
-            </v-navigation-drawer>
+            <Sidebar />
 
             <v-app-bar app>
                 <!-- to be changed to Topbar component-->
@@ -53,12 +45,14 @@
 <script>
 import AnswerList from './../components/AnswerList.vue'
 import SingleQuestion from './../components/SingleQuestion.vue'
+import Sidebar from '../components/Sidebar'
 
 export default {
     setup() {},
     components: {
         AnswerList,
         SingleQuestion,
+        Sidebar,
     },
     data() {
         return {
