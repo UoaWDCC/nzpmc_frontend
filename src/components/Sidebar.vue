@@ -1,11 +1,10 @@
 <template>
     <div>
-        <h1>This is an exam page</h1>
         <v-card>
             <v-navigation-drawer permanent expand-on-hover>
                 <v-list
                     v-for="question in questions"
-                    :key="question.no"
+                    :key="question.id"
                     nav
                     dense
                 >
@@ -13,7 +12,7 @@
                         <v-list-item-icon>
                             <v-icon>mdi-star</v-icon>
                             <v-list-item-title>{{
-                                question.no
+                                question.text
                             }}</v-list-item-title>
                         </v-list-item-icon>
                     </v-list-item>
@@ -27,10 +26,10 @@ export default {
     data() {
         return {
             questions: [
-                { no: ' Question 1 ' },
-                { no: ' Question 2 ' },
-                { no: ' Question 3 ' },
-                { no: ' Question 4 ' },
+                { text: 'Question 1', id: '1' },
+                { text: 'Question 2', id: '2' },
+                { text: 'Question 3', id: '3' },
+                { text: 'Question 4', id: '4' },
             ],
         }
     },
