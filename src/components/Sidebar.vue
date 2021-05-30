@@ -1,25 +1,14 @@
 <template>
-    <div>
-        <v-card>
-            <v-navigation-drawer permanent expand-on-hover>
-                <v-list
-                    v-for="question in questions"
-                    :key="question.id"
-                    nav
-                    dense
-                >
-                    <v-list-item class="px-2" link>
-                        <v-list-item-icon>
-                            <v-icon>mdi-star</v-icon>
-                            <v-list-item-title>{{
-                                question.text
-                            }}</v-list-item-title>
-                        </v-list-item-icon>
-                    </v-list-item>
-                </v-list>
-            </v-navigation-drawer>
-        </v-card>
-    </div>
+    <v-navigation-drawer permanent expand-on-hover app>
+        <v-list v-for="question in questions" :key="question.id" nav dense>
+            <v-list-item class="px-2" link>
+                <v-list-item-icon>
+                    <v-icon>mdi-star</v-icon>
+                    <v-list-item-title>{{ question.text }}</v-list-item-title>
+                </v-list-item-icon>
+            </v-list-item>
+        </v-list>
+    </v-navigation-drawer>
 </template>
 <script>
 export default {
