@@ -3,16 +3,8 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router'
 import firebase from 'firebase'
+import firebaseConfig from './firebaseConfig.json'
 
-const firebaseConfig = {
-    apiKey: 'AIzaSyCxuVkCJKSK-Aj4BSTFjIMxV2waTy5DSVM',
-    authDomain: 'nzpmc-backend.firebaseapp.com',
-    projectId: 'nzpmc-backend',
-    storageBucket: 'nzpmc-backend.appspot.com',
-    messagingSenderId: '724631434702',
-    appId: '1:724631434702:web:080de4fa10b968768c679f',
-    measurementId: 'G-41S1NG62PR',
-}
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 firebase.analytics()
