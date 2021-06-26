@@ -11,6 +11,7 @@
             <h1>
                 Welcome to New Zealand Physics and Mathematics Competition 2021!
             </h1>
+            <p>{{ users }}</p>
             <iframe
                 width="560"
                 height="315"
@@ -34,11 +35,36 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
 export default {
     methods: {
         redirectToExam() {
             this.$router.push({ path: '/exam' })
         },
+    },
+    data() {
+        return {
+            users: null,
+        }
+    },
+    apollo: {
+        users: gql`
+            query {
+                users {
+                    id
+                    displayName
+                    email
+                    emailVerified
+                    photoURL
+                    firstName
+                    lastName
+                    yearLevel
+                    role
+                    created
+                    modified
+                }
+            }
+        `,
     },
 }
 </script>

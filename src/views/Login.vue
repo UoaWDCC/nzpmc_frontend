@@ -62,6 +62,7 @@
 
 <script>
 import firebase from 'firebase'
+import { onLogin } from '../vue-apollo'
 export default {
     name: 'Login',
     data() {
@@ -78,6 +79,12 @@ export default {
                 .signInWithEmailAndPassword(this.email, this.password)
                 .then(() => {
                     this.$router.push('/welcome')
+                    firebase
+                        .auth()
+                        .currentUser.getIdToken(true)
+                        .then((res) =>
+                            onLogin(this.$apollo.provider.defaultClient, res),
+                        )
                 })
                 .catch((error) => {
                     this.loginError = error.message
