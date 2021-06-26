@@ -19,7 +19,9 @@
                                 height="90vh"
                                 elevation="3"
                             >
-                                <SingleQuestion :question="question.text" />
+                                <SingleQuestion
+                                    :question="questions[0].question"
+                                />
                             </v-sheet>
                         </v-col>
                         <v-col>
@@ -28,7 +30,9 @@
                                 height="90vh"
                                 elevation="3"
                             >
-                                <AnswerList :optionsList="answers" />
+                                <AnswerList
+                                    :optionsList="questions[0].options"
+                                />
                             </v-card>
                         </v-col>
                     </v-row>
@@ -46,6 +50,7 @@
 import AnswerList from './../components/AnswerList.vue'
 import SingleQuestion from './../components/SingleQuestion.vue'
 import Sidebar from '../components/Sidebar'
+import gql from 'graphql-tag'
 
 export default {
     setup() {},
@@ -66,6 +71,26 @@ export default {
                 { text: 'Fourth Answer', id: 4 },
             ],
         }
+    },
+    apollo: {
+        questions: gql`
+            query {
+                questions {
+                    id
+                    question
+                    numOfAnswers
+                    topics
+                    options {
+                        id
+                        option
+                        created
+                        modified
+                    }
+                    created
+                    modified
+                }
+            }
+        `,
     },
 }
 </script>

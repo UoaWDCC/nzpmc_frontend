@@ -6,7 +6,7 @@
             :key="option.id"
         >
             <SingleAnswer
-                :ans="option.text"
+                :ans="option.option"
                 :optionID="option.id"
                 :selectedID="currentOptionID"
                 @selectanswer="selectOneAnswer"
