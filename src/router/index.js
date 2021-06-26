@@ -12,12 +12,16 @@ const routes = [
         path: '/',
         name: 'Login',
         component: Login,
+        meta: {
+            title: 'Login - NZPMC',
+        },
     },
     {
         path: '/welcome',
         name: 'Welcome',
         component: Welcome,
         meta: {
+            title: 'Welcome - NZPMC',
             authRequired: true,
         },
     },
@@ -26,6 +30,7 @@ const routes = [
         name: 'Exam',
         component: Exam,
         meta: {
+            title: 'Exam - NZPMC',
             authRequired: true,
         },
     },
@@ -34,6 +39,7 @@ const routes = [
         name: 'Submission',
         component: Submission,
         meta: {
+            title: 'Submission - NZPMC',
             authRequired: true,
         },
     },
