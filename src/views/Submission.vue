@@ -29,7 +29,9 @@
                     </v-card-text>
                     <v-card-text>
                         If you have any feedback or encountered any issues,
-                        please email <b>contact@nzpmc.com</b>.
+                        please email
+                        <a href="mailto:contact@nzpmc.com">contact@nzpmc.com</a
+                        >.
                     </v-card-text>
                 </div>
             </v-container>
