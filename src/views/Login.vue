@@ -1,12 +1,13 @@
 <template>
     <v-container>
         <v-row class="justify-center">
-            <v-col sm="6" lg="4" xl="3">
+            <v-col class="col-12 col-sm-6 col-lg-4 col-xl-3">
                 <v-card style="padding: 16px" elevation="2" outlined>
                     <v-row>
-                        <v-col sm="12">
+                        <v-col class="col-12">
                             <img
                                 style="max-width: 100%; width: 300px"
+                                class="d-block mx-auto"
                                 alt="NZPMC Logo"
                                 src="../assets/logo.png"
                             />
@@ -16,10 +17,10 @@
             </v-col>
         </v-row>
         <v-row class="justify-center">
-            <v-col sm="6" lg="4" xl="3">
+            <v-col class="col-12 col-sm-6 col-lg-4 col-xl-3">
                 <v-card style="padding: 16px" elevation="2" outlined>
                     <v-row>
-                        <v-col class="text-left">
+                        <v-col class="text-start">
                             <h1>Login</h1>
                         </v-col>
                     </v-row>
