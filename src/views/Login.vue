@@ -2,7 +2,7 @@
     <v-container>
         <v-row class="justify-center">
             <v-col class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                <v-card style="padding: 16px" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2" outlined>
                     <v-row>
                         <v-col class="col-12">
                             <img
@@ -18,7 +18,7 @@
         </v-row>
         <v-row class="justify-center">
             <v-col class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                <v-card style="padding: 16px" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2" outlined>
                     <v-row>
                         <v-col class="text-start">
                             <h1>Login</h1>
