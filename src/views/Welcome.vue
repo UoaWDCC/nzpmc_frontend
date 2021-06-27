@@ -5,7 +5,7 @@
             <img
                 class="logo"
                 alt="NZPMC logo"
-                src="../assets/nzpmclogo.jpg"
+                src="../assets/logo.png"
                 width="400"
             />
             <h1>
