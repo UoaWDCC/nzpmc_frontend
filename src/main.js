@@ -24,8 +24,15 @@ router.beforeEach((to, from, next) => {
             document.title = 'Login - NZPMC'
         }
     } else {
-        // No authentication needed
-        next()
+        // No authentication needed, not available to logged in users
+        if (firebase.auth().currentUser) {
+            next({
+                path: '/welcome',
+            })
+            document.title = 'Welcome - NZPMC'
+        } else {
+            next()
+        }
     }
 })
 
@@ -35,7 +42,7 @@ Vue.config.productionTip = false
 window.firebaseLoaded = false
 firebase.auth().onAuthStateChanged(function (user) {
     if (!window.firebaseLoaded) {
-        const app = new Vue({
+        new Vue({
             vuetify,
             router,
             VueLaTeX2JS,

@@ -15,12 +15,11 @@
                     align="center"
                     justify="center"
                 >
-                    <v-img
-                        alt="NZPMC Logo"
-                        src="../assets/nzpmclogo.jpg"
+                    <img
                         style="width: 800px"
-                    >
-                    </v-img>
+                        alt="NZPMC Logo"
+                        src="../assets/logo.png"
+                    />
                 </v-card>
             </v-row>
         </v-container>

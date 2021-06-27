@@ -2,10 +2,10 @@
     <div class="submission" align="center">
         <v-card class="mx-auto my-12" max-width="30vw">
             <v-container>
-                <v-img
-                    class="logo"
-                    alt="NZPMC logo"
-                    src="../assets/nzpmclogo.jpg"
+                <img
+                    style="max-width: 100%; width: 400px"
+                    alt="NZPMC Logo"
+                    src="../assets/logo.png"
                 />
                 <div>
                     <div class="d-flex justify-center">

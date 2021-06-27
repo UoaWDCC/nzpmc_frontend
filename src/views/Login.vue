@@ -1,62 +1,80 @@
 <template>
-    <div class="login">
-        <v-container style="background-color: #ecf0f1; max-width: 500px">
-            <v-row align="center">
-                <v-col sm="12" align="center" justify="center">
-                    <img
-                        style="max-width: 100%"
-                        alt="NZPMC Logo"
-                        src="/assets/logo.png"
-                    />
-                </v-col>
-            </v-row>
-            <form @submit.prevent="login">
-                <v-row dense>
-                    <v-col>
-                        <v-text-field
-                            placeholder="Username"
-                            prepend-icon="mdi-account-circle"
-                            color="#03a9f4"
-                            v-model="email"
-                        />
-                    </v-col>
-                </v-row>
-                <v-row dense>
-                    <v-col>
-                        <v-text-field
-                            type="Password"
-                            placeholder="Password"
-                            prepend-icon="mdi-lock"
-                            append-icon="mdi-eye-off"
-                            color="#03a9f4"
-                            v-model="password"
-                        />
-                    </v-col>
-                </v-row>
-                <v-row v-if="this.loginError">
-                    <v-col sm="12">
-                        <v-alert type="error">{{ this.loginError }}</v-alert>
-                    </v-col>
-                </v-row>
-                <v-row align="center" justify="center">
-                    <v-col sm="12" align="end" justify="center">
-                        <v-btn
-                            x-large
-                            color="#03a9f4"
-                            style="max-width: 100%"
-                            type="submit"
-                            >Login</v-btn
-                        >
-                    </v-col>
-                </v-row>
-            </form>
-        </v-container>
-    </div>
+    <v-container>
+        <v-row class="justify-center">
+            <v-col sm="6" lg="4" xl="3">
+                <v-card style="padding: 16px" elevation="2" outlined>
+                    <v-row>
+                        <v-col sm="12">
+                            <img
+                                style="max-width: 100%; width: 300px"
+                                alt="NZPMC Logo"
+                                src="../assets/logo.png"
+                            />
+                        </v-col>
+                    </v-row>
+                </v-card>
+            </v-col>
+        </v-row>
+        <v-row class="justify-center">
+            <v-col sm="6" lg="4" xl="3">
+                <v-card style="padding: 16px" elevation="2" outlined>
+                    <v-row>
+                        <v-col class="text-left">
+                            <h1>Login</h1>
+                        </v-col>
+                    </v-row>
+                    <form @submit.prevent="login">
+                        <v-row>
+                            <v-col>
+                                <v-text-field
+                                    v-model="email"
+                                    :rules="[rules.required, rules.email]"
+                                    label="Email"
+                                    color="#03a9f4"
+                                    prepend-icon="mdi-account-circle"
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col>
+                                <v-text-field
+                                    v-model="password"
+                                    :rules="[rules.required]"
+                                    :type="showPassword ? 'text' : 'password'"
+                                    @click:append="showPassword = !showPassword"
+                                    label="Password"
+                                    color="#03a9f4"
+                                    prepend-icon="mdi-lock"
+                                    :append-icon="
+                                        showPassword ? 'mdi-eye' : 'mdi-eye-off'
+                                    "
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row v-if="this.loginError">
+                            <v-col>
+                                <v-alert type="error">{{
+                                    this.loginError
+                                }}</v-alert>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col class="text-right">
+                                <v-btn large color="primary" type="submit"
+                                    >Login</v-btn
+                                >
+                            </v-col>
+                        </v-row>
+                    </form>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
-<style scoped>
-.login {
-    margin-top: 5rem;
+<style>
+.v-input__prepend-outer {
+    margin-right: 0.5rem;
 }
 </style>
 
@@ -69,6 +87,17 @@ export default {
             email: '',
             password: '',
             loginError: null,
+            showPassword: false,
+            rules: {
+                required: (value) => !!value || 'Required.',
+                email: (value) => {
+                    const pattern =
+                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    return pattern.test(value) || 'Invalid e-mail.'
+                },
+                emailMatch: () =>
+                    'The email and password you entered do not match',
+            },
         }
     },
     methods: {
