@@ -18,18 +18,18 @@ router.beforeEach((to, from, next) => {
         if (firebase.auth().currentUser) {
             next()
         } else {
+            document.title = 'Login - NZPMC'
             next({
                 path: '/',
             })
-            document.title = 'Login - NZPMC'
         }
     } else {
         // No authentication needed, not available to logged in users
         if (firebase.auth().currentUser) {
+            document.title = 'Welcome - NZPMC'
             next({
                 path: '/welcome',
             })
-            document.title = 'Welcome - NZPMC'
         } else {
             next()
         }
