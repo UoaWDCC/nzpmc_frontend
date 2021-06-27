@@ -73,10 +73,11 @@ export default {
         }
     },
     methods: {
-        login() {
-            firebase
+        async login() {
+            await firebase
                 .auth()
                 .signInWithEmailAndPassword(this.email, this.password)
+<<<<<<< HEAD
                 .then(() => {
                     this.$router.push('/welcome')
                     firebase
@@ -86,9 +87,14 @@ export default {
                             onLogin(this.$apollo.provider.defaultClient, res),
                         )
                 })
+=======
+>>>>>>> master
                 .catch((error) => {
                     this.loginError = error.message
                 })
+            const res = await firebase.auth().currentUser.getIdToken(true)
+            onLogin(this.$apollo.provider.defaultClient, res)
+            this.$router.push('/welcome')
         },
     },
 }
