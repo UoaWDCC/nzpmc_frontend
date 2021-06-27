@@ -8,7 +8,11 @@
             <v-col class="col-12 col-md-8 col-lg-9 col-xl-10">
                 <v-row>
                     <v-col class="col-12">
-                        <Topbar @toggleSidebar="sidebarOpen = !sidebarOpen" />
+                        <Topbar
+                            @toggleSidebar="sidebarOpen = !sidebarOpen"
+                            :startTimestamp="startTimestamp"
+                            :duration="duration"
+                        />
                     </v-col>
                 </v-row>
                 <v-row>
@@ -59,6 +63,9 @@ export default {
                 { title: 'Question 4', id: '4' },
             ],
             sidebarOpen: false,
+            startTimestamp:
+                'Sun Jun 27 2021 23:45:52 GMT+1200 (New Zealand Standard Time)',
+            duration: 5550,
         }
     },
     mounted() {
