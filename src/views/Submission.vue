@@ -1,5 +1,12 @@
 <template>
     <v-container>
+        <v-toolbar
+            class="rounded-bl-xl rounded-br-0"
+            style="position: fixed; top: 0; right: 0; z-index: 1"
+            collapse
+        >
+            <SignOutMenu />
+        </v-toolbar>
         <v-row class="justify-center">
             <v-col class="col-12 col-xl-8">
                 <v-card class="pa-4" elevation="2">
@@ -47,3 +54,13 @@
         </v-row>
     </v-container>
 </template>
+
+<script>
+import SignOutMenu from './../components/SignOutMenu.vue'
+
+export default {
+    components: {
+        SignOutMenu,
+    },
+}
+</script>

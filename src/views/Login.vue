@@ -33,6 +33,7 @@
                                     label="Email"
                                     color="#03a9f4"
                                     prepend-icon="mdi-account-circle"
+                                    autocomplete="username"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -49,6 +50,7 @@
                                     :append-icon="
                                         showPassword ? 'mdi-eye' : 'mdi-eye-off'
                                     "
+                                    autocomplete="current-password"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
