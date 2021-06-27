@@ -67,10 +67,3 @@ firebase.auth().onAuthStateChanged(function (user) {
         }
     }
 })
-
-window.signOut = function () {
-    firebase.auth().signOut()
-    console.log(
-        'signOut() is a temporary function not intended for production.',
-    )
-}
