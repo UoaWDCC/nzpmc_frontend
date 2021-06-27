@@ -2,11 +2,11 @@
     <v-container>
         <v-row class="justify-center">
             <v-col class="col-12 col-xl-8">
-                <v-card class="pa-4" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2">
                     <v-row>
                         <v-col class="col-12">
                             <img
-                                style="max-width: 100%; width: 300px"
+                                style="width: 100%; max-width: 300px"
                                 class="d-block mx-auto"
                                 alt="NZPMC Logo"
                                 src="../assets/logo.png"
@@ -18,7 +18,7 @@
         </v-row>
         <v-row class="justify-center">
             <v-col class="col-12 col-xl-8">
-                <v-card class="pa-4" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2">
                     <v-row>
                         <v-col class="col-12">
                             <h1>That's it, well done!</h1>
