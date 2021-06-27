@@ -2,11 +2,11 @@
     <v-container>
         <v-row class="justify-center">
             <v-col class="col-12 col-xl-8">
-                <v-card class="pa-4" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2">
                     <v-row>
                         <v-col class="col-12">
                             <img
-                                style="max-width: 100%; width: 300px"
+                                style="width: 100%; max-width: 300px"
                                 class="d-block mx-auto"
                                 alt="NZPMC Logo"
                                 src="../assets/logo.png"
@@ -18,7 +18,7 @@
         </v-row>
         <v-row class="justify-center">
             <v-col class="col-12 col-xl-8">
-                <v-card class="pa-4" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2">
                     <v-row>
                         <v-col class="col-12 col-md-6">
                             <h1>Kia ora!</h1>
@@ -30,14 +30,19 @@
                             </p>
                         </v-col>
                         <v-col class="col-12 col-md-6">
-                            <iframe
-                                style="width: 100%; min-height: 320px"
-                                src="https://www.youtube.com/embed/Des5TrztWRU"
-                                title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen
-                            ></iframe>
+                            <v-responsive
+                                style="width: 100%"
+                                :aspect-ratio="16 / 9"
+                            >
+                                <iframe
+                                    style="width: 100%; height: 100%"
+                                    src="https://www.youtube.com/embed/Des5TrztWRU"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                ></iframe>
+                            </v-responsive>
                         </v-col>
                     </v-row>
                     <v-row>
