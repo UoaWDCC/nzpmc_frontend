@@ -2,7 +2,7 @@
     <v-container>
         <v-row class="justify-center">
             <v-col class="col-12 col-xl-8">
-                <v-card style="padding: 16px" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2" outlined>
                     <v-row>
                         <v-col class="col-12">
                             <img
@@ -18,7 +18,7 @@
         </v-row>
         <v-row class="justify-center">
             <v-col class="col-12 col-xl-8">
-                <v-card style="padding: 16px" elevation="2" outlined>
+                <v-card class="pa-4" elevation="2" outlined>
                     <v-row>
                         <v-col class="col-12 col-md-6">
                             <h1>Kia ora!</h1>
@@ -52,7 +52,3 @@
         </v-row>
     </v-container>
 </template>
-
-<script>
-export default {}
-</script>
