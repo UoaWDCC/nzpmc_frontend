@@ -54,9 +54,12 @@
                     </v-row>
                     <v-row>
                         <v-col class="col-12 text-center">
-                            <v-btn to="/exam" large color="primary"
-                                >I'm ready!</v-btn
-                            >
+                            <v-btn to="/exam" large color="primary">
+                                I'm ready!
+                                <v-icon right class="material-icons">
+                                    navigate_next
+                                </v-icon>
+                            </v-btn>
                         </v-col>
                     </v-row>
                 </v-card>

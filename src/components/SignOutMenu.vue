@@ -2,7 +2,7 @@
     <v-menu bottom left offset-y>
         <template v-slot:activator="{ on, attrs }">
             <v-btn icon v-bind="attrs" v-on="on">
-                <v-icon>mdi-account-circle</v-icon>
+                <span class="material-icons">account_circle</span>
             </v-btn>
         </template>
 

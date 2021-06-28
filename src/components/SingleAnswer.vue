@@ -6,9 +6,7 @@
     >
         <div class="d-flex">
             <div class="font-weight-bold flex-grow-1 pa-4">{{ text }}</div>
-            <v-icon dense class="ma-4 justify-center">
-                mdi-check-circle
-            </v-icon>
+            <span class="material-icons ma-4"> check_circle </span>
         </div>
     </v-card>
 </template>

@@ -1,10 +1,9 @@
 <template>
     <v-card elevation="2">
         <v-toolbar>
-            <v-app-bar-nav-icon
-                @click="toggleSidebar()"
-                class="d-md-none"
-            ></v-app-bar-nav-icon>
+            <v-btn icon @click="toggleSidebar()" class="d-md-none">
+                <span class="material-icons">menu</span>
+            </v-btn>
 
             <v-toolbar-title class="timer"
                 >Time remaining: {{ formattedTimeRemaining }}</v-toolbar-title

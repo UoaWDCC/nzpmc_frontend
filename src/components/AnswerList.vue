@@ -16,7 +16,12 @@
         </v-row>
         <v-row>
             <v-col class="col-12 text-end">
-                <v-btn color="primary" large> Next </v-btn>
+                <v-btn color="primary" large>
+                    Next
+                    <v-icon right class="material-icons">
+                        navigate_next
+                    </v-icon>
+                </v-btn>
             </v-col>
         </v-row>
     </v-card>

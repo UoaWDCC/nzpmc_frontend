@@ -32,9 +32,15 @@
                                     :rules="[rules.required, rules.email]"
                                     label="Email"
                                     color="#03a9f4"
-                                    prepend-icon="mdi-account-circle"
                                     autocomplete="username"
-                                ></v-text-field>
+                                >
+                                    <v-icon
+                                        slot="prepend"
+                                        class="material-icons"
+                                    >
+                                        account_circle
+                                    </v-icon>
+                                </v-text-field>
                             </v-col>
                         </v-row>
                         <v-row>
@@ -43,15 +49,28 @@
                                     v-model="password"
                                     :rules="[rules.required]"
                                     :type="showPassword ? 'text' : 'password'"
-                                    @click:append="showPassword = !showPassword"
                                     label="Password"
                                     color="#03a9f4"
-                                    prepend-icon="mdi-lock"
-                                    :append-icon="
-                                        showPassword ? 'mdi-eye' : 'mdi-eye-off'
-                                    "
                                     autocomplete="current-password"
-                                ></v-text-field>
+                                >
+                                    <v-icon
+                                        slot="prepend"
+                                        class="material-icons"
+                                    >
+                                        lock
+                                    </v-icon>
+                                    <v-icon
+                                        slot="append"
+                                        class="material-icons"
+                                        @click="showPassword = !showPassword"
+                                    >
+                                        {{
+                                            showPassword
+                                                ? 'visibility'
+                                                : 'visibility_off'
+                                        }}
+                                    </v-icon>
+                                </v-text-field>
                             </v-col>
                         </v-row>
                         <v-row v-if="this.loginError">
@@ -63,9 +82,12 @@
                         </v-row>
                         <v-row>
                             <v-col class="text-right">
-                                <v-btn large color="primary" type="submit"
-                                    >Login</v-btn
-                                >
+                                <v-btn large color="primary" type="submit">
+                                    <v-icon left class="material-icons">
+                                        login
+                                    </v-icon>
+                                    Login
+                                </v-btn>
                             </v-col>
                         </v-row>
                     </form>
@@ -114,7 +136,6 @@ export default {
                 })
             const res = await firebase.auth().currentUser.getIdToken(true)
             onLogin(this.$apollo.provider.defaultClient, res)
-            this.$router.push('/welcome')
         },
     },
 }
