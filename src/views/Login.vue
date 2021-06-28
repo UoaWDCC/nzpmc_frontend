@@ -77,18 +77,6 @@ export default {
             await firebase
                 .auth()
                 .signInWithEmailAndPassword(this.email, this.password)
-<<<<<<< HEAD
-                .then(() => {
-                    this.$router.push('/welcome')
-                    firebase
-                        .auth()
-                        .currentUser.getIdToken(true)
-                        .then((res) =>
-                            onLogin(this.$apollo.provider.defaultClient, res),
-                        )
-                })
-=======
->>>>>>> master
                 .catch((error) => {
                     this.loginError = error.message
                 })

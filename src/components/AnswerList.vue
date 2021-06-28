@@ -2,7 +2,7 @@
     <v-container style="background-color: #ecf0f1; max-width: 400px">
         <div
             style="padding-bottom: 20px"
-            v-for="option in optionsList"
+            v-for="option in userQuiz.option"
             :key="option.id"
         >
             <SingleAnswer
@@ -23,6 +23,7 @@
 
 <script>
 import SingleAnswer from './SingleAnswer.vue'
+import { OptionsQuery } from '../gql/queries/option'
 
 export default {
     components: {
@@ -34,12 +35,24 @@ export default {
         },
     },
     props: {
-        optionsList: Array,
+        questionID: String,
+        quizID: String,
     },
     data() {
         return {
             currentOptionID: null,
         }
+    },
+    apollo: {
+        userQuiz: {
+            query: OptionsQuery,
+            variables() {
+                return {
+                    quizID: this.quizID,
+                    id: this.questionID,
+                }
+            },
+        },
     },
 }
 </script>

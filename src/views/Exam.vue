@@ -20,7 +20,9 @@
                                 elevation="3"
                             >
                                 <SingleQuestion
-                                    :question="questions[0].question"
+                                    :questionID="currentQuestionID"
+                                    :questionIDIndex="currentQuestionIndex"
+                                    :quizID="userQuizzes[0].quizID"
                                 />
                             </v-sheet>
                         </v-col>
@@ -31,7 +33,9 @@
                                 elevation="3"
                             >
                                 <AnswerList
-                                    :optionsList="questions[0].options"
+                                    :questionID="currentQuestionID"
+                                    :questionIDIndex="currentQuestionIndex"
+                                    :quizID="userQuizzes[0].quizID"
                                 />
                             </v-card>
                         </v-col>
@@ -50,7 +54,7 @@
 import AnswerList from './../components/AnswerList.vue'
 import SingleQuestion from './../components/SingleQuestion.vue'
 import Sidebar from '../components/Sidebar'
-import gql from 'graphql-tag'
+import { UserQuizzesQuery } from '../gql/queries/userQuiz'
 
 export default {
     setup() {},
@@ -70,27 +74,12 @@ export default {
                 { text: 'Third Answer', id: 3 },
                 { text: 'Fourth Answer', id: 4 },
             ],
+            currentQuestionID: 'r73d47drw7ssa2',
+            currentQuestionIndex: 1,
         }
     },
     apollo: {
-        questions: gql`
-            query {
-                questions {
-                    id
-                    question
-                    numOfAnswers
-                    topics
-                    options {
-                        id
-                        option
-                        created
-                        modified
-                    }
-                    created
-                    modified
-                }
-            }
-        `,
+        userQuizzes: UserQuizzesQuery,
     },
 }
 </script>

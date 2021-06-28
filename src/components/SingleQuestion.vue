@@ -3,9 +3,11 @@
         <v-container style="max-width: 800px">
             <v-row>
                 <v-card style="background-color: #ecf0f1; width: 800px">
-                    <v-card-title align="start"> Question 1 </v-card-title>
+                    <v-card-title align="start">
+                        Question {{ questionIDIndex }}
+                    </v-card-title>
                     <v-card-text align="start" style="color: black">
-                        <latex :content="question" />
+                        <latex :content="userQuiz.question" />
                     </v-card-text>
                 </v-card>
             </v-row>
@@ -27,9 +29,23 @@
     </div>
 </template>
 <script>
+import { QuestionQuery } from '../gql/queries/question'
 export default {
     props: {
-        question: String,
+        questionID: String,
+        questionIDIndex: Number,
+        quizID: String,
+    },
+    apollo: {
+        userQuiz: {
+            query: QuestionQuery,
+            variables() {
+                return {
+                    quizID: this.quizID,
+                    id: this.questionID,
+                }
+            },
+        },
     },
 }
 </script>
