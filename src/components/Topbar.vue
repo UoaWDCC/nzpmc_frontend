@@ -6,7 +6,8 @@
             </v-btn>
 
             <v-toolbar-title class="timer"
-                >Time remaining: {{ formattedTimeRemaining }}</v-toolbar-title
+                ><span class="d-none d-sm-inline-block">Time remaining:</span>
+                {{ formattedTimeRemaining }}</v-toolbar-title
             >
             <v-spacer />
 

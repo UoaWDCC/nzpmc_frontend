@@ -75,9 +75,13 @@
                         </v-row>
                         <v-row v-if="this.loginError">
                             <v-col>
-                                <v-alert type="error">{{
-                                    this.loginError
-                                }}</v-alert>
+                                <v-alert type="error" icon="">
+                                    <v-icon
+                                        slot="prepend"
+                                        class="material-icons mr-4"
+                                        >warning</v-icon
+                                    >{{ this.loginError }}</v-alert
+                                >
                             </v-col>
                         </v-row>
                         <v-row>

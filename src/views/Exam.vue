@@ -1,6 +1,6 @@
 <template>
-    <v-container v-resize="onResize" style="min-height: 100vh">
-        <v-row style="height: 100%">
+    <v-container v-resize="onResize" class="d-flex" style="min-height: 100vh">
+        <v-row class="align-self-center" style="height: 100%">
             <v-col class="col-12 col-md-4 col-lg-3 col-xl-2 d-none d-md-block">
                 <v-card class="questionCard" elevation="2" style="height: 100%">
                 </v-card>
