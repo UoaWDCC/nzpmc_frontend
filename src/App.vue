@@ -1,5 +1,13 @@
 <template>
     <v-app id="app">
+        <v-progress-linear
+            :active="$loading"
+            :indeterminate="$loading"
+            absolute
+            top
+            color="secondary darken-2"
+            style="z-index: 2"
+        ></v-progress-linear>
         <router-view />
     </v-app>
 </template>

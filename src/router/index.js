@@ -63,6 +63,7 @@ function getCurrentUser() {
 }
 
 router.beforeEach(async (to, from, next) => {
+    Vue.prototype.$loading = true
     document.title = to.meta.title ? to.meta.title : 'NZPMC'
     if (to.matched.some((record) => record.meta.authRequired)) {
         // When the requested page requires authentication
@@ -81,6 +82,7 @@ router.beforeEach(async (to, from, next) => {
             next()
         }
     }
+    Vue.prototype.$loading = false
 })
 
 export default router

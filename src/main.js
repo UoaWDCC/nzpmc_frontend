@@ -12,7 +12,7 @@ import { createProvider } from './vue-apollo'
 firebase.initializeApp(firebaseConfig)
 firebase.analytics()
 
-let firebaseLoaded = true
+let firebaseLoaded = false
 firebase.auth().onAuthStateChanged(function (user) {
     if (firebaseLoaded && user) {
         // New user, show welcome page
