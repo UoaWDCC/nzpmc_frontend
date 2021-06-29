@@ -2,17 +2,17 @@
     <v-card class="pa-4 fill-height" elevation="2">
         <v-card-title>Question {{ questionIndex + 1 }}</v-card-title>
         <v-card-text>
-            <latex :content="quizID" />
+            <latex :content="userQuiz.question.question" />
         </v-card-text>
         <img
             style="width: 100%; max-width: 300px"
             alt="question image"
-            v-bind:src="quizID"
+            v-bind:src="userQuiz.question.imageURI"
         />
     </v-card>
 </template>
 <script>
-import { QuestionsQuery } from '../gql/queries/question'
+import { QuestionQuery } from '../gql/queries/question'
 export default {
     props: {
         questionID: String,
@@ -22,14 +22,16 @@ export default {
     data() {
         return {
             userQuiz: null,
-            ID: this.quizID,
         }
     },
     apollo: {
         userQuiz: {
-            query: QuestionsQuery,
-            variables: {
-                quizID: this.ID,
+            query: QuestionQuery,
+            variables() {
+                return {
+                    quizID: this.quizID,
+                    questionID: this.questionID,
+                }
             },
         },
     },
