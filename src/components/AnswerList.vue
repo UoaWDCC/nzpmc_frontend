@@ -3,11 +3,11 @@
         <v-row>
             <v-col
                 class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-12"
-                v-for="option in optionsList"
+                v-for="option in userQuiz.question.options"
                 :key="option.id"
             >
                 <SingleAnswer
-                    :text="option.text"
+                    :text="option.option"
                     :optionID="option.id"
                     :selectedID="currentOptionID"
                     @selectanswer="selectOneAnswer"
@@ -46,6 +46,7 @@ export default {
     },
     data() {
         return {
+            userQuiz: null,
             currentOptionID: null,
         }
     },
@@ -55,7 +56,7 @@ export default {
             variables() {
                 return {
                     quizID: this.quizID,
-                    id: this.questionID,
+                    questionID: this.questionID,
                 }
             },
         },

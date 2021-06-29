@@ -26,7 +26,6 @@
                     <v-col class="col-12 col-xl-4">
                         <AnswerList
                             :questionID="selectedQuestionID"
-                            :questionIndex="selectedQuestionIndex"
                             :quizID="this.userQuizzes[0].id"
                         />
                     </v-col>
