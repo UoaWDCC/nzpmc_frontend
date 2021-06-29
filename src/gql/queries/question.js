@@ -21,7 +21,7 @@ export const QuestionsQuery = gql`
 `
 
 export const QuestionQuery = gql`
-    query QuestionQuery($quizID: ID!) {
+    query QuestionQuery($quizID: ID!, $questionId: ID!) {
         userQuiz(quizID: $quizID) {
             question(id: $questionId) {
                 ...QuestionFragment

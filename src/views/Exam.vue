@@ -18,14 +18,16 @@
                 <v-row>
                     <v-col class="col-12 col-xl-8">
                         <SingleQuestion
+                            :questionID="selectedQuestionID"
                             :questionIndex="selectedQuestionIndex"
-                            :QuizID="QuizID"
+                            :quizID="this.userQuizzes[0].id"
                         />
                     </v-col>
                     <v-col class="col-12 col-xl-4">
                         <AnswerList
-                            :questionID="selectedQuestionIndex"
-                            :QuizID="QuizID"
+                            :questionID="selectedQuestionID"
+                            :questionIndex="selectedQuestionIndex"
+                            :quizID="this.userQuizzes[0].id"
                         />
                     </v-col>
                 </v-row>
@@ -56,14 +58,12 @@ export default {
         return {
             userQuizzes: null,
             selectedQuestionIndex: 0,
+            selectedQuestionID: null,
             sidebarOpen: false,
             startTimestamp:
                 'Sun Jun 27 2021 23:45:52 GMT+1200 (New Zealand Standard Time)',
             duration: 5550,
         }
-    },
-    computed: {
-        quizID: userQuizzes[0].id,
     },
     apollo: {
         userQuizzes: UserQuizzesQuery,
