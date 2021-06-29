@@ -1,55 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="exam">
-        <v-app>
-            <Sidebar />
-
-            <v-app-bar app>
-                <!-- to be changed to Topbar component-->
-            </v-app-bar>
-
-            <!-- Sizes your content based upon application components -->
-            <v-main>
-                <!-- Provides the application the proper gutter -->
-                <v-container fluid>
-                    <v-row>
-                        <v-col cols="8">
-                            <!-- to be changed to single question component -->
-                            <v-sheet
-                                class="d-flex align-center justify-center"
-                                height="90vh"
-                                elevation="3"
-                            >
-                                <SingleQuestion
-                                    :questionID="currentQuestionID"
-                                    :questionIDIndex="currentQuestionIndex"
-                                    :quizID="userQuizID"
-                                />
-                            </v-sheet>
-                        </v-col>
-                        <v-col>
-                            <v-card
-                                class="d-flex align-center justify-center"
-                                height="90vh"
-                                elevation="3"
-                            >
-                                <AnswerList
-                                    :questionID="currentQuestionID"
-                                    :questionIDIndex="currentQuestionIndex"
-                                    :quizID="userQuizID"
-                                />
-                            </v-card>
-                        </v-col>
-                    </v-row>
-                </v-container>
-            </v-main>
-
-            <v-footer app>
-                <!-- -->
-            </v-footer>
-        </v-app>
-    </div>
-=======
     <v-container v-resize="onResize" class="d-flex" style="min-height: 100vh">
         <v-row class="align-self-center" style="height: 100%">
             <v-col class="col-12 col-md-4 col-lg-3 col-xl-2 d-none d-md-block">
@@ -68,10 +17,16 @@
                 </v-row>
                 <v-row>
                     <v-col class="col-12 col-xl-8">
-                        <SingleQuestion :question="question.text" />
+                        <SingleQuestion
+                            :questionIndex="selectedQuestionIndex"
+                            :QuizID="QuizID"
+                        />
                     </v-col>
                     <v-col class="col-12 col-xl-4">
-                        <AnswerList :optionsList="answers" />
+                        <AnswerList
+                            :questionID="selectedQuestionIndex"
+                            :QuizID="QuizID"
+                        />
                     </v-col>
                 </v-row>
             </v-col>
@@ -82,18 +37,13 @@
             @drawerClosed="sidebarOpen = false"
         />
     </v-container>
->>>>>>> master
 </template>
 <script>
 import Sidebar from '../components/Sidebar.vue'
 import Topbar from '../components/Topbar.vue'
 import SingleQuestion from './../components/SingleQuestion.vue'
-<<<<<<< HEAD
-import Sidebar from '../components/Sidebar'
-import { UserQuizzesQuery } from '../gql/queries/userQuiz'
-=======
 import AnswerList from './../components/AnswerList.vue'
->>>>>>> master
+import { UserQuizzesQuery } from '../gql/queries/userQuiz'
 
 export default {
     components: {
@@ -104,36 +54,19 @@ export default {
     },
     data() {
         return {
-            question: {
-                text: '$$\\frac{a}{b}$$',
-            },
-            answers: [
-                { text: 'First Answer', id: 1 },
-                { text: 'Second Answer', id: 2 },
-                { text: 'Third Answer', id: 3 },
-                { text: 'Fourth Answer', id: 4 },
-            ],
-<<<<<<< HEAD
-            currentQuestionID: 'r73d47drw7ssa2',
-            currentQuestionIndex: 1,
-            userQuizzes: [],
-            userQuizID: userQuizzes[0].id,
-        }
-    },
-    apollo: {
-        userQuizzes: UserQuizzesQuery,
-=======
-            questions: [
-                { title: 'Question 1', id: '1' },
-                { title: 'Question 2', id: '2' },
-                { title: 'Question 3', id: '3' },
-                { title: 'Question 4', id: '4' },
-            ],
+            userQuizzes: null,
+            selectedQuestionIndex: 0,
             sidebarOpen: false,
             startTimestamp:
                 'Sun Jun 27 2021 23:45:52 GMT+1200 (New Zealand Standard Time)',
             duration: 5550,
         }
+    },
+    computed: {
+        quizID: userQuizzes[0].id,
+    },
+    apollo: {
+        userQuizzes: UserQuizzesQuery,
     },
     mounted() {
         this.onResize()
@@ -170,7 +103,6 @@ export default {
                 ).style.display = 'none'
             }
         },
->>>>>>> master
     },
 }
 </script>
