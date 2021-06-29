@@ -22,7 +22,7 @@
                                 <SingleQuestion
                                     :questionID="currentQuestionID"
                                     :questionIDIndex="currentQuestionIndex"
-                                    :quizID="userQuizzes[0].quizID"
+                                    :quizID="userQuizID"
                                 />
                             </v-sheet>
                         </v-col>
@@ -35,7 +35,7 @@
                                 <AnswerList
                                     :questionID="currentQuestionID"
                                     :questionIDIndex="currentQuestionIndex"
-                                    :quizID="userQuizzes[0].quizID"
+                                    :quizID="userQuizID"
                                 />
                             </v-card>
                         </v-col>
@@ -76,6 +76,8 @@ export default {
             ],
             currentQuestionID: 'r73d47drw7ssa2',
             currentQuestionIndex: 1,
+            userQuizzes: [],
+            userQuizID: userQuizzes[0].id,
         }
     },
     apollo: {
