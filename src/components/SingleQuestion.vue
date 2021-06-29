@@ -5,6 +5,7 @@
             <latex :content="userQuiz.question.question" />
         </v-card-text>
         <img
+            v-if="userQuiz.question.imageURI !== ''"
             style="width: 100%; max-width: 300px"
             alt="question image"
             v-bind:src="userQuiz.question.imageURI"

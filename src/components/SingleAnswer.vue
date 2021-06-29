@@ -6,7 +6,9 @@
     >
         <div class="d-flex">
             <div class="font-weight-bold flex-grow-1 pa-4">{{ text }}</div>
-            <span class="material-icons ma-4"> check_circle </span>
+            <span v-if="selectedID === optionID" class="material-icons ma-4">
+                check_circle
+            </span>
         </div>
     </v-card>
 </template>
@@ -15,8 +17,8 @@
 export default {
     props: {
         text: String,
-        selectedID: Number,
-        optionID: Number,
+        selectedID: String,
+        optionID: String,
     },
     methods: {
         selectanswer() {
