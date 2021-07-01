@@ -85,7 +85,7 @@ export default {
                 }
             },
         },
-        update: (data) => data.QuestionsQuery,
+        // update: (data) => data.QuestionsQuery,
     },
 }
 </script>
