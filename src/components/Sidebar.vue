@@ -85,7 +85,7 @@ export default {
                 }
             },
         },
-        //update: (data) => data.userQuiz,
+        // update: (data) => data.QuestionsQuery,
     },
 }
 </script>
