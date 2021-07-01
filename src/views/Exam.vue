@@ -20,20 +20,20 @@
                         <SingleQuestion
                             :questionID="selectedQuestionID"
                             :questionIndex="selectedQuestionIndex"
-                            :quizID="this.userQuizzes[0].id"
+                            :quizID="userQuizzes[0].id"
                         />
                     </v-col>
                     <v-col class="col-12 col-xl-4">
                         <AnswerList
                             :questionID="selectedQuestionID"
-                            :quizID="this.userQuizzes[0].id"
+                            :quizID="userQuizzes[0].id"
                         />
                     </v-col>
                 </v-row>
             </v-col>
         </v-row>
         <Sidebar
-            :quizID="1"
+            :quizID="userQuizzes[0].id"
             @selectQuestion="selectOneQuestion"
             :sidebarOpen="sidebarOpen"
             @drawerOpen="sidebarOpen = true"
