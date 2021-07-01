@@ -17,16 +17,23 @@
                 </v-row>
                 <v-row>
                     <v-col class="col-12 col-xl-8">
-                        <SingleQuestion :question="question.text" />
+                        <SingleQuestion
+                            :questionID="selectedQuestionID"
+                            :questionIndex="selectedQuestionIndex"
+                            :quizID="userQuizzes[0].id"
+                        />
                     </v-col>
                     <v-col class="col-12 col-xl-4">
-                        <AnswerList :optionsList="answers" />
+                        <AnswerList
+                            :questionID="selectedQuestionID"
+                            :quizID="userQuizzes[0].id"
+                        />
                     </v-col>
                 </v-row>
             </v-col>
         </v-row>
         <Sidebar
-            :quizID="1"
+            :quizID="userQuizzes[0].id"
             @selectQuestion="selectOneQuestion"
             :sidebarOpen="sidebarOpen"
             @drawerOpen="sidebarOpen = true"
@@ -39,6 +46,7 @@ import Sidebar from '../components/Sidebar.vue'
 import Topbar from '../components/Topbar.vue'
 import SingleQuestion from './../components/SingleQuestion.vue'
 import AnswerList from './../components/AnswerList.vue'
+import { UserQuizzesQuery } from '../gql/queries/userQuiz'
 
 export default {
     components: {
@@ -49,27 +57,17 @@ export default {
     },
     data() {
         return {
-            selectedQuestionID: null,
-            question: {
-                text: '$$\\frac{a}{b}$$',
-            },
-            answers: [
-                { text: 'First Answer', id: 1 },
-                { text: 'Second Answer', id: 2 },
-                { text: 'Third Answer', id: 3 },
-                { text: 'Fourth Answer', id: 4 },
-            ],
-            questions: [
-                { title: 'Question 1', id: '1' },
-                { title: 'Question 2', id: '2' },
-                { title: 'Question 3', id: '3' },
-                { title: 'Question 4', id: '4' },
-            ],
+            userQuizzes: null,
+            selectedQuestionIndex: 0,
+            selectedQuestionID: 'UwHA8QfIu52054cqIQ3J',
             sidebarOpen: false,
             startTimestamp:
                 'Sun Jun 27 2021 23:45:52 GMT+1200 (New Zealand Standard Time)',
             duration: 5550,
         }
+    },
+    apollo: {
+        userQuizzes: UserQuizzesQuery,
     },
     mounted() {
         this.onResize()
