@@ -28,7 +28,7 @@
                     link
                 >
                     <v-list-item-content
-                        @click="selectQuestion"
+                        @click="selectQuestion(question.id)"
                         color="#00008B"
                         class="px-2"
                         link
