@@ -23,7 +23,7 @@
                 mandatory
             >
                 <v-list-item
-                    v-for="(question, index) in questions"
+                    v-for="(question, index) in userQuiz.questions"
                     :key="question.id"
                     link
                 >
@@ -46,12 +46,13 @@
 import { QuestionsQuery } from '../gql/queries/question'
 export default {
     props: {
+        sidebarOpen: Boolean,
         quizID: String,
     },
 
     data() {
         return {
-            questions: null,
+            userQuiz: null,
             drawer: null,
             selectedQuestionID: null,
         }
@@ -69,8 +70,6 @@ export default {
             }
         },
     },
-    props: ['sidebarOpen'],
-
     methods: {
         selectQuestion(id) {
             this.selectedQuestionID = id
@@ -78,7 +77,7 @@ export default {
         },
     },
     apollo: {
-        questions: {
+        userQuiz: {
             query: QuestionsQuery,
             variables() {
                 return {
@@ -86,7 +85,7 @@ export default {
                 }
             },
         },
-        update: (data) => data.QuestionsQuery,
+        //update: (data) => data.userQuiz,
     },
 }
 </script>
