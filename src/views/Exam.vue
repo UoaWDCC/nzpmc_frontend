@@ -1,7 +1,7 @@
 <template>
     <div class="exam">
         <v-app>
-            <Sidebar />
+            <Sidebar :quizID="1" @selectQuestion="selectOneQuestion" />
 
             <v-app-bar app>
                 <!-- to be changed to Topbar component-->
@@ -56,6 +56,7 @@ export default {
     },
     data() {
         return {
+            selectedQuestionID: null,
             question: {
                 text: '$$\\frac{a}{b}$$',
             },
@@ -66,6 +67,11 @@ export default {
                 { text: 'Fourth Answer', id: 4 },
             ],
         }
+    },
+    methods: {
+        selectOneQuestion(id) {
+            this.selectedQuestionID = id
+        },
     },
 }
 </script>
