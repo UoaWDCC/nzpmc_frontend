@@ -1,6 +1,6 @@
 <template>
     <v-card class="pa-4" elevation="2">
-        <v-row>
+        <v-row v-if="userQuiz !== null">
             <v-col
                 class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-12"
                 v-for="option in userQuiz.question.options"

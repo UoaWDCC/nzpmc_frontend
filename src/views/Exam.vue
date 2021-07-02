@@ -1,45 +1,59 @@
 <template>
-    <v-container v-resize="onResize" class="d-flex" style="min-height: 100vh">
-        <v-row class="align-self-center" style="height: 100%">
-            <v-col class="col-12 col-md-4 col-lg-3 col-xl-2 d-none d-md-block">
-                <v-card class="questionCard" elevation="2" style="height: 100%">
-                </v-card>
-            </v-col>
-            <v-col class="col-12 col-md-8 col-lg-9 col-xl-10">
-                <v-row>
-                    <v-col class="col-12">
-                        <Topbar
-                            @toggleSidebar="sidebarOpen = !sidebarOpen"
-                            :startTimestamp="startTimestamp"
-                            :duration="duration"
-                        />
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col class="col-12 col-xl-8">
-                        <SingleQuestion
-                            :questionID="selectedQuestionID"
-                            :questionIndex="selectedQuestionIndex"
-                            :quizID="userQuizzes[0].id"
-                        />
-                    </v-col>
-                    <v-col class="col-12 col-xl-4">
-                        <AnswerList
-                            :questionID="selectedQuestionID"
-                            :quizID="userQuizzes[0].id"
-                        />
-                    </v-col>
-                </v-row>
-            </v-col>
-        </v-row>
-        <Sidebar
-            :quizID="userQuizzes[0].id"
-            @selectQuestion="selectOneQuestion"
-            :sidebarOpen="sidebarOpen"
-            @drawerOpen="sidebarOpen = true"
-            @drawerClosed="sidebarOpen = false"
-        />
-    </v-container>
+    <div>
+        <v-progress-circular v-if="userQuizzes === null" />
+        <v-container
+            v-else
+            v-resize="onResize"
+            class="d-flex"
+            style="min-height: 100vh"
+        >
+            <v-row class="align-self-center" style="height: 100%">
+                <v-col
+                    class="col-12 col-md-4 col-lg-3 col-xl-2 d-none d-md-block"
+                >
+                    <v-card
+                        class="questionCard"
+                        elevation="2"
+                        style="height: 100%"
+                    >
+                    </v-card>
+                </v-col>
+                <v-col class="col-12 col-md-8 col-lg-9 col-xl-10">
+                    <v-row>
+                        <v-col class="col-12">
+                            <Topbar
+                                @toggleSidebar="sidebarOpen = !sidebarOpen"
+                                :startTimestamp="startTimestamp"
+                                :duration="duration"
+                            />
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col class="col-12 col-xl-8">
+                            <SingleQuestion
+                                :questionID="selectedQuestionID"
+                                :questionIndex="selectedQuestionIndex"
+                                :quizID="userQuizzes[0].id"
+                            />
+                        </v-col>
+                        <v-col class="col-12 col-xl-4">
+                            <AnswerList
+                                :questionID="selectedQuestionID"
+                                :quizID="userQuizzes[0].id"
+                            />
+                        </v-col>
+                    </v-row>
+                </v-col>
+            </v-row>
+            <Sidebar
+                :quizID="userQuizzes[0].id"
+                @selectQuestion="selectOneQuestion"
+                :sidebarOpen="sidebarOpen"
+                @drawerOpen="sidebarOpen = true"
+                @drawerClosed="sidebarOpen = false"
+            />
+        </v-container>
+    </div>
 </template>
 <script>
 import Sidebar from '../components/Sidebar.vue'

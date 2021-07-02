@@ -1,5 +1,5 @@
 <template>
-    <v-card class="pa-4 fill-height" elevation="2">
+    <v-card v-if="userQuiz !== null" class="pa-4 fill-height" elevation="2">
         <v-card-title>Question {{ questionIndex + 1 }}</v-card-title>
         <v-card-text>
             <latex :content="userQuiz.question.question" />

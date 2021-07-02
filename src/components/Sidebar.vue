@@ -18,6 +18,7 @@
         <v-divider></v-divider>
         <v-list dense nav>
             <v-list-item-group
+                v-if="userQuiz !== null"
                 v-model="selectedQuestionID"
                 color="primary"
                 mandatory
