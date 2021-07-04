@@ -41,10 +41,16 @@ export default {
             return startTime + this.duration * 1000
         },
         formattedTimeRemaining() {
-            const hours = Math.floor(this.timeRemaining / 3600)
-            const minutes = Math.floor((this.timeRemaining % 3600) / 60)
+            let hours = Math.floor(this.timeRemaining / 3600)
+            let minutes = Math.floor((this.timeRemaining % 3600) / 60)
             let seconds = this.timeRemaining % 60
 
+            if (hours < 10) {
+                hours = `0${hours}`
+            }
+            if (minutes < 10) {
+                minutes = `0${minutes}`
+            }
             if (seconds < 10) {
                 seconds = `0${seconds}`
             }
