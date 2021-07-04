@@ -1,7 +1,7 @@
 <template>
     <v-card v-if="userQuiz !== null" class="pa-4 fill-height" elevation="2">
         <v-card-title>Question {{ questionIndex + 1 }}</v-card-title>
-        <v-card-text>
+        <v-card-text style="font-size: 1rem; color: rgba(0, 0, 0, 0.75)">
             <latex :content="userQuiz.question.question" />
         </v-card-text>
         <img
