@@ -41,13 +41,14 @@ export default {
             return startTime + this.duration * 1000
         },
         formattedTimeRemaining() {
-            const minutes = Math.floor(this.timeRemaining / 60)
+            const hours = Math.floor(this.timeRemaining / 3600)
+            const minutes = Math.floor((this.timeRemaining % 3600) / 60)
             let seconds = this.timeRemaining % 60
 
             if (seconds < 10) {
                 seconds = `0${seconds}`
             }
-            return `${minutes}:${seconds}`
+            return `${hours}:${minutes}:${seconds}`
         },
     },
     watch: {
@@ -59,7 +60,7 @@ export default {
 
             // Change timer colour if neccessary
             const timerEl = this.$el.querySelector('.timer')
-            console.log(val)
+
             if (0 <= val && val <= this.timeDanger) {
                 timerEl.classList.add('error--text')
                 timerEl.classList.remove('warning--text', 'text--darken-2')
@@ -70,6 +71,7 @@ export default {
     },
     mounted() {
         this.startTimer()
+        console.log(this.startTimestamp, this.duration)
     },
     methods: {
         toggleSidebar() {

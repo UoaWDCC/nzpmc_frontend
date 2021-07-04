@@ -1,10 +1,5 @@
 <template>
-    <v-navigation-drawer
-        v-model="drawer"
-        class="questionDrawer"
-        mobile-breakpoint="sm"
-        absolute
-    >
+    <v-navigation-drawer permanent class="questionDrawer" style="width: 100%">
         <v-list-item>
             <v-list-item-content>
                 <img
@@ -29,7 +24,7 @@
                     link
                 >
                     <v-list-item-content
-                        @click="selectQuestion(question.id)"
+                        @click="selectQuestion(index)"
                         color="#00008B"
                         class="px-2"
                         link
@@ -47,7 +42,6 @@
 import { QuestionsQuery } from '../gql/queries/question'
 export default {
     props: {
-        sidebarOpen: Boolean,
         quizID: String,
     },
 
@@ -60,9 +54,6 @@ export default {
     },
 
     watch: {
-        sidebarOpen(val) {
-            this.drawer = val
-        },
         drawer(val) {
             if (val === true) {
                 this.$emit('drawerOpen')
@@ -72,9 +63,9 @@ export default {
         },
     },
     methods: {
-        selectQuestion(id) {
-            this.selectedQuestionID = id
-            this.$emit('selectQuestion', this.selectedQuestionID)
+        selectQuestion(index) {
+            this.selectedQuestionID = this.userQuiz.questions[index].id
+            this.$emit('selectQuestion', index, this.selectedQuestionID)
         },
     },
     apollo: {
