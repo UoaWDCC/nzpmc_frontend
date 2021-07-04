@@ -38,9 +38,7 @@
                             <Sidebar
                                 :quizID="userQuizzes[0].id"
                                 @selectQuestion="selectOneQuestion"
-                                :sidebarOpen="sidebarOpen"
-                                @drawerOpen="sidebarOpen = true"
-                                @drawerClosed="sidebarOpen = false"
+                                @sidebarLoaded="sidebarLoaded = true"
                             />
                         </v-card>
                     </v-col>
@@ -82,6 +80,7 @@ export default {
             selectedQuestionIndex: 0,
             selectedQuestionID: 'UwHA8QfIu52054cqIQ3J',
             sidebarOpen: false,
+            sidebarLoaded: false,
         }
     },
     apollo: {
@@ -96,22 +95,24 @@ export default {
             this.selectedQuestionID = id
         },
         onResize() {
-            // Moves the location of the sidebar component based on the
-            const sidebar = this.$el.querySelector('.questionDrawer')
-            const sidebarInCard =
-                sidebar.parentElement.classList.contains('sidebarCard')
-            const screenIsMobile = window.innerWidth < 960
+            if (this.sidebarLoaded) {
+                // Moves the location of the sidebar component based on the
+                const sidebar = this.$el.querySelector('.questionDrawer')
+                const sidebarInCard =
+                    sidebar.parentElement.classList.contains('sidebarCard')
+                const screenIsMobile = window.innerWidth < 960
 
-            if (sidebarInCard && screenIsMobile) {
-                // Sidebar must be moved to the mobile card
-                sidebar.remove()
+                if (sidebarInCard && screenIsMobile) {
+                    // Sidebar must be moved to the mobile card
+                    sidebar.remove()
 
-                this.$el.querySelector('.sidebarMobileCard').append(sidebar)
-                this.sidebarOpen = false
-            } else if (!sidebarInCard && !screenIsMobile) {
-                // Sidebar must be moved to the normal card
-                sidebar.remove()
-                this.$el.querySelector('.sidebarCard').append(sidebar)
+                    this.$el.querySelector('.sidebarMobileCard').append(sidebar)
+                    this.sidebarOpen = false
+                } else if (!sidebarInCard && !screenIsMobile) {
+                    // Sidebar must be moved to the normal card
+                    sidebar.remove()
+                    this.$el.querySelector('.sidebarCard').append(sidebar)
+                }
             }
         },
     },

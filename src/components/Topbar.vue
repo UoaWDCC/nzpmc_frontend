@@ -48,7 +48,10 @@ export default {
             if (seconds < 10) {
                 seconds = `0${seconds}`
             }
-            return `${hours}:${minutes}:${seconds}`
+
+            return this.timeRemaining === null
+                ? '...'
+                : `${hours}:${minutes}:${seconds}`
         },
     },
     watch: {
@@ -71,7 +74,6 @@ export default {
     },
     mounted() {
         this.startTimer()
-        console.log(this.startTimestamp, this.duration)
     },
     methods: {
         toggleSidebar() {

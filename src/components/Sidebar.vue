@@ -43,30 +43,23 @@ import { QuestionsQuery } from '../gql/queries/question'
 export default {
     props: {
         quizID: String,
+        sidebarLoaded: Function,
     },
 
     data() {
         return {
             userQuiz: null,
-            drawer: null,
             selectedQuestionID: null,
         }
-    },
-
-    watch: {
-        drawer(val) {
-            if (val === true) {
-                this.$emit('drawerOpen')
-            } else {
-                this.$emit('drawerClosed')
-            }
-        },
     },
     methods: {
         selectQuestion(index) {
             this.selectedQuestionID = this.userQuiz.questions[index].id
             this.$emit('selectQuestion', index, this.selectedQuestionID)
         },
+    },
+    created() {
+        this.$emit('sidebarLoaded')
     },
     apollo: {
         userQuiz: {
