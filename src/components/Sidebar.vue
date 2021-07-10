@@ -5,7 +5,6 @@
         mobile-breakpoint="sm"
         absolute
     >
-        <v-btn large color="primary">Submit</v-btn>
         <v-list-item>
             <v-list-item-content>
                 <img
@@ -14,6 +13,7 @@
                     alt="NZPMC Logo"
                     src="../assets/logo.png"
                 />
+                <v-btn large color="primary">Submit</v-btn>
             </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>

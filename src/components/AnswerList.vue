@@ -16,13 +16,13 @@
         </v-row>
         <v-row align="center" justify="space-between">
             <v-col class="col-3">
-                <v-btn color="primary" large>
+                <v-btn color="primary" large @click="selectPreQuestion">
                     <v-icon left class="material-icons"> chevron_left </v-icon>
                     Previous
                 </v-btn>
             </v-col>
             <v-col class="col-3 text-end">
-                <v-btn color="primary" large>
+                <v-btn color="primary" large @click="selectNextQuestion">
                     Next
                     <v-icon right class="material-icons">
                         navigate_next
@@ -41,11 +41,6 @@ export default {
     components: {
         SingleAnswer,
     },
-    methods: {
-        selectOneAnswer(number) {
-            this.currentOptionID = number
-        },
-    },
     props: {
         questionID: String,
         quizID: String,
@@ -55,6 +50,13 @@ export default {
             userQuiz: null,
             currentOptionID: null,
         }
+    },
+    methods: {
+        selectOneAnswer(number) {
+            this.currentOptionID = number
+        },
+        selectNextQuestion() {},
+        selectPreQuestion() {},
     },
     apollo: {
         userQuiz: {
