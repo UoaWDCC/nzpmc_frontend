@@ -5,6 +5,7 @@
         mobile-breakpoint="sm"
         absolute
     >
+        <v-btn large color="primary">Submit</v-btn>
         <v-list-item>
             <v-list-item-content>
                 <img

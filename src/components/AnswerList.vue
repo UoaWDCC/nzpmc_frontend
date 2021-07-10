@@ -14,8 +14,14 @@
                 />
             </v-col>
         </v-row>
-        <v-row>
-            <v-col class="col-12 text-end">
+        <v-row align="center" justify="space-between">
+            <v-col class="col-3">
+                <v-btn color="primary" large>
+                    <v-icon left class="material-icons"> chevron_left </v-icon>
+                    Previous
+                </v-btn>
+            </v-col>
+            <v-col class="col-3 text-end">
                 <v-btn color="primary" large>
                     Next
                     <v-icon right class="material-icons">
