@@ -1,14 +1,14 @@
 <template>
-    <div align="center">
+    <div align="center" class="pa-5">
         <v-dialog align="center" v-model="dialog" width="500">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn color="primary" dark v-bind="attrs" v-on="on">
                     Submit
                 </v-btn>
             </template>
-            <v-container style="background-color: #ecf0f1; max-width: 400px">
+            <v-container style="background-color: #ecf0f1; max-width: 500px">
                 <v-container
-                    style="background-color: #c1c1c1; max-width: 400px"
+                    style="background-color: #c1c1c1; max-width: 500px"
                 >
                     <h3><b>Are you sure you want to submit?</b></h3>
                 </v-container>
