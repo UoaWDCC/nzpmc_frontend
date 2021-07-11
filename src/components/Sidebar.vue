@@ -10,6 +10,7 @@
                 />
             </v-list-item-content>
         </v-list-item>
+        <SubmissionConfirmation />
         <v-divider></v-divider>
         <v-list dense nav>
             <v-list-item-group
@@ -40,7 +41,11 @@
 </template>
 <script>
 import { QuestionsQuery } from '../gql/queries/question'
+import SubmissionConfirmation from './SubmissionConfirmation.vue'
 export default {
+    components: {
+        SubmissionConfirmation,
+    },
     props: {
         quizID: String,
         sidebarLoaded: Function,
