@@ -34,15 +34,14 @@
                         class="col-12 d-md-none"
                         v-bind:class="{ 'd-none': !sidebarOpen }"
                     >
-                        <!-- <v-card class="sidebarMobileCard" elevation="2"> -->
-                        <Sidebar
-                            :quizID="userQuiz.id"
-                            :questionID="selectedQuestionID"
-                            :questionIndex="selectedQuestionIndex"
-                            @selectQuestion="selectOneQuestion"
-                            @sidebarLoaded="sidebarLoaded = true"
-                        />
-                        <!-- </v-card> -->
+                        <v-card class="sidebarMobileCard" elevation="2">
+                            <Sidebar
+                                :quizID="userQuiz.id"
+                                :questionIndex="selectedQuestionIndex"
+                                @selectQuestion="selectOneQuestion"
+                                @sidebarLoaded="sidebarLoaded = true"
+                            />
+                        </v-card>
                     </v-col>
                     <v-col class="col-12">
                         <SingleQuestion

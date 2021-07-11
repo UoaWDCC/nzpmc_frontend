@@ -14,13 +14,13 @@
         <v-divider></v-divider>
         <v-list dense nav>
             <v-list-item-group
-                v-if="userQuiz !== null"
+                v-if="questions !== null"
                 v-model="selectedQuestionIndex"
                 color="primary"
                 mandatory
             >
                 <v-list-item
-                    v-for="(question, index) in userQuiz.questions"
+                    v-for="(question, index) in questions"
                     :key="question.id"
                 >
                     <v-list-item-content
@@ -42,20 +42,19 @@ import { QuestionsQuery } from '../gql/queries/question'
 export default {
     props: {
         quizID: String,
-        questionID: String,
         sidebarLoaded: Function,
         questionIndex: Number,
     },
 
     data() {
         return {
-            userQuiz: null,
+            questions: null,
             selectedQuestionIndex: null,
         }
     },
     methods: {
         selectQuestion(index) {
-            this.selectedQuestionIndex = this.userQuiz.questions[index].id
+            this.selectedQuestionIndex = this.questions[index].id
             this.$emit('selectQuestion', index, this.selectedQuestionIndex)
         },
     },
@@ -63,18 +62,20 @@ export default {
         this.$emit('sidebarLoaded')
     },
     apollo: {
-        userQuiz: {
+        questions: {
             query: QuestionsQuery,
             variables() {
                 return {
                     quizID: this.quizID,
                 }
             },
+            update: (data) => {
+                return data.userQuiz.questions
+            },
         },
-        // update: (data) => data.QuestionsQuery,
     },
     watch: {
-        questionID() {
+        questionIndex() {
             this.selectedQuestionIndex = this.questionIndex
         },
     },

@@ -18,7 +18,7 @@
                 />
             </v-col>
         </v-row>
-        <v-row align="center" justify="space-between">
+        <v-row v-if="questions !== null" align="center" justify="space-between">
             <v-col class="col-3">
                 <v-btn
                     v-if="this.questionIndex > 0"
@@ -32,7 +32,7 @@
             </v-col>
             <v-col class="col-3 text-end">
                 <v-btn
-                    v-if="this.questions.length - 1 > this.questionIndex"
+                    v-if="this.questionIndex < this.questions.length - 1"
                     color="primary"
                     large
                     @click="selectNextQuestion"
@@ -70,19 +70,22 @@ export default {
     },
     methods: {
         selectNextQuestion() {
-            this.$emit(
-                'selectQuestion',
-                this.questionIndex + 1,
-                this.questions[this.questionIndex + 1].id,
-            )
+            if (this.questionIndex < this.questions.length - 1) {
+                this.$emit(
+                    'selectQuestion',
+                    this.questionIndex + 1,
+                    this.questions[this.questionIndex + 1].id,
+                )
+            }
         },
         selectPreQuestion() {
-            this.preQuestionID = this.questions[this.questionIndex - 1].id
-            this.$emit(
-                'selectQuestion',
-                this.questionIndex - 1,
-                this.preQuestionID,
-            )
+            if (this.questionIndex > 0) {
+                this.$emit(
+                    'selectQuestion',
+                    this.questionIndex - 1,
+                    this.questions[this.questionIndex - 1].id,
+                )
+            }
         },
         selectOneAnswer(ID) {
             this.question.userAnswer.id = ID
