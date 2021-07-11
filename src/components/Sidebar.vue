@@ -10,7 +10,7 @@
                 />
             </v-list-item-content>
         </v-list-item>
-        <SubmissionConfirmation />
+        <SubmissionConfirmation :quizID="this.quizID" />
         <v-divider></v-divider>
         <v-list dense nav>
             <v-list-item-group
