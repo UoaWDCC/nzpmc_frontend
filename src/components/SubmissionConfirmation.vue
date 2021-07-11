@@ -22,7 +22,6 @@
                         background-color: #09b683;
                     "
                     x-large
-                    to="/submission"
                     @click="submitQuiz"
                 >
                     Yes
@@ -64,6 +63,7 @@ export default {
                     },
                 },
             })
+            this.$router.push('/submission')
         },
     },
 }
