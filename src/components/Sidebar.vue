@@ -15,18 +15,16 @@
         <v-list dense nav>
             <v-list-item-group
                 v-if="userQuiz !== null"
-                v-model="selectedQuestionID"
+                v-model="selectedQuestionIndex"
                 color="primary"
                 mandatory
             >
                 <v-list-item
                     v-for="(question, index) in userQuiz.questions"
                     :key="question.id"
-                    link
                 >
                     <v-list-item-content
                         @click="selectQuestion(index)"
-                        color="#00008B"
                         class="px-2"
                         link
                     >
@@ -44,19 +42,21 @@ import { QuestionsQuery } from '../gql/queries/question'
 export default {
     props: {
         quizID: String,
+        questionID: String,
         sidebarLoaded: Function,
+        questionIndex: Number,
     },
 
     data() {
         return {
             userQuiz: null,
-            selectedQuestionID: null,
+            selectedQuestionIndex: null,
         }
     },
     methods: {
         selectQuestion(index) {
-            this.selectedQuestionID = this.userQuiz.questions[index].id
-            this.$emit('selectQuestion', index, this.selectedQuestionID)
+            this.selectedQuestionIndex = this.userQuiz.questions[index].id
+            this.$emit('selectQuestion', index, this.selectedQuestionIndex)
         },
     },
     created() {
@@ -72,6 +72,11 @@ export default {
             },
         },
         // update: (data) => data.QuestionsQuery,
+    },
+    watch: {
+        questionID() {
+            this.selectedQuestionIndex = this.questionIndex
+        },
     },
 }
 </script>
