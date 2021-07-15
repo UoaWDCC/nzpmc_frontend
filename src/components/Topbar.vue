@@ -18,6 +18,7 @@
 
 <script>
 import SignOutMenu from './SignOutMenu.vue'
+import { CurrentTimeQuery } from '../gql/queries/time'
 export default {
     components: {
         SignOutMenu,
@@ -26,9 +27,21 @@ export default {
         timeRemaining: null,
         timeWarning: 600,
         timeDanger: 300,
+        currentTime: new Date().valueOf(),
     }),
     props: ['startTimestamp', 'duration'],
     computed: {
+        pollInterval() {
+            return Math.floor(this.timeRemaining / 6)
+        },
+        nextCalibrateTime() {
+            const startTime = new Date(this.startTimestamp).valueOf()
+            return (
+                startTime +
+                (this.duration - this.timeRemaining) +
+                Math.floor(this.timeRemaining / 6)
+            )
+        },
         endTime() {
             // Calculates the UNIX timestamp when the time will be up
             const startTime = new Date(this.startTimestamp).valueOf()
@@ -55,6 +68,9 @@ export default {
         },
     },
     watch: {
+        currentTime(val) {
+            this.startTimer(val)
+        },
         timeRemaining(val) {
             // Stop timer if finished
             if (val <= 0) {
@@ -73,17 +89,17 @@ export default {
         },
     },
     mounted() {
-        this.startTimer()
+        this.startTimer(new Date().valueOf())
     },
     methods: {
         toggleSidebar() {
             this.$emit('toggleSidebar')
         },
-        startTimer() {
+        startTimer(currentTime) {
             const component = this
             this.timerInterval = setInterval(function () {
                 const newTimeRemaining = Math.floor(
-                    (component.endTime - new Date().valueOf()) / 1000,
+                    (component.endTime - currentTime) / 1000,
                 )
                 if (newTimeRemaining >= 0) {
                     component.timeRemaining = newTimeRemaining
@@ -92,6 +108,14 @@ export default {
         },
         endTimer() {
             clearInterval(this.timerInterval)
+        },
+    },
+    appolo: {
+        currentTime: {
+            query: CurrentTimeQuery,
+            pollInterval() {
+                return this.pollInterval
+            },
         },
     },
 }
