@@ -1,6 +1,6 @@
 <template>
     <div align="center">
-        <v-overlay :value="overlay" v-if="$apollo.loading">
+        <v-overlay :value="true" v-if="$apollo.loading">
             <v-progress-circular indeterminate size="80" align="center" />
         </v-overlay>
         <v-card v-if="question !== null" class="pa-4 fill-height" elevation="2">

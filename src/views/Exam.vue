@@ -1,6 +1,6 @@
 <template>
     <div align="center">
-        <v-overlay :value="overlay" v-if="userQuiz === null">
+        <v-overlay :value="true" v-if="userQuiz === null">
             <v-progress-circular indeterminate size="80" align="center" />
             <h2 align="center" justify="space-around" style="margin-top: 20px">
                 Loading...
