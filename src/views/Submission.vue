@@ -29,6 +29,7 @@
                     <v-row>
                         <v-col class="col-12">
                             <h1>That's it, well done!</h1>
+                            <h2>Score: {{ score }}/10</h2>
                             <p>
                                 Ka pai! This year's questions were particularly
                                 challenging, so do not be dismayed if you were
@@ -57,10 +58,24 @@
 
 <script>
 import SignOutMenu from './../components/SignOutMenu.vue'
+import { UserQuizzesQuery } from '../gql/queries/userQuiz'
 
 export default {
     components: {
         SignOutMenu,
+    },
+    data() {
+        return {
+            score: null,
+        }
+    },
+    apollo: {
+        score: {
+            query: UserQuizzesQuery,
+            update: (data) => {
+                return data.userQuizzes[0].score
+            },
+        },
     },
 }
 </script>
