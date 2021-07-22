@@ -36,6 +36,7 @@
                             @toggleSidebar="sidebarOpen = !sidebarOpen"
                             :startTimestamp="userQuiz.startTime"
                             :duration="userQuiz.duration"
+                            :quizID="userQuiz.id"
                         />
                     </v-col>
                 </v-row>

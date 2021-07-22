@@ -19,6 +19,7 @@
 <script>
 import SignOutMenu from './SignOutMenu.vue'
 import { CurrentTimeQuery } from '../gql/queries/time'
+import { SubmitUserQuizMutation } from '../gql/mutations/submission'
 export default {
     components: {
         SignOutMenu,
@@ -29,7 +30,7 @@ export default {
         timeDanger: 300,
         currentTime: new Date().valueOf(),
     }),
-    props: ['startTimestamp', 'duration'],
+    props: ['startTimestamp', 'duration', 'quizID'],
     computed: {
         pollInterval() {
             return Math.floor(this.timeRemaining / 6)
@@ -75,6 +76,16 @@ export default {
             // Stop timer if finished
             if (val <= 0) {
                 this.endTimer()
+                this.$apollo
+                    .mutate({
+                        mutation: SubmitUserQuizMutation,
+                        variables: {
+                            input: {
+                                userQuizID: this.quizID,
+                            },
+                        },
+                    })
+                    .then(this.$router.push('/submission'))
             }
 
             // Change timer colour if neccessary
