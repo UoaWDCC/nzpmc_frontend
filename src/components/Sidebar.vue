@@ -30,15 +30,14 @@
                     >
                         <v-row>
                             <v-col class="d-flex justify-center">
-                                <span class="material-icons">
-                                    emoji_flags
-                                </span>
-                                <v-list-item-title>
+                                <v-icon> emoji_flags </v-icon>
+                                <v-list-item-title class="mr-2">
                                     Question {{ index + 1 }}
                                 </v-list-item-title>
-                                <span class="material-icons">
+                                <v-icon v-if="index === 5">
                                     check_circle
-                                </span>
+                                </v-icon>
+                                <v-icon v-else color="white">circle </v-icon>
                             </v-col>
                         </v-row>
                     </v-list-item-content>
