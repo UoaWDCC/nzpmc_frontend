@@ -25,12 +25,22 @@
                 >
                     <v-list-item-content
                         @click="selectQuestion(index)"
-                        class="px-2"
+                        class="pa-2"
                         link
                     >
-                        <v-list-item-title>
-                            Question {{ index + 1 }}
-                        </v-list-item-title>
+                        <v-row>
+                            <v-col class="d-flex justify-center">
+                                <span class="material-icons">
+                                    emoji_flags
+                                </span>
+                                <v-list-item-title>
+                                    Question {{ index + 1 }}
+                                </v-list-item-title>
+                                <span class="material-icons">
+                                    check_circle
+                                </span>
+                            </v-col>
+                        </v-row>
                     </v-list-item-content>
                 </v-list-item>
             </v-list-item-group>
