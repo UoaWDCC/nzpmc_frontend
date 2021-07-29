@@ -16,7 +16,6 @@
                     "
                     @selectanswer="selectOneAnswer"
                 />
-                <Sidebar :answeredID="question.userAnswer" />
             </v-col>
         </v-row>
         <v-row v-if="questions !== null" align="center" justify="space-between">

@@ -34,7 +34,9 @@
                                 <v-list-item-title class="mr-2">
                                     Question {{ index + 1 }}
                                 </v-list-item-title>
-                                <v-icon v-if="answeredID !== null">
+                                <v-icon
+                                    v-if="questions[index].userAnswer !== null"
+                                >
                                     check_circle
                                 </v-icon>
                                 <v-icon v-else color="white">circle </v-icon>
@@ -63,7 +65,7 @@ export default {
     data() {
         return {
             questions: null,
-            selectedQuestionIndex: null,
+            selectedQuestionIndex: 0,
         }
     },
     methods: {
