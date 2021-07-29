@@ -16,6 +16,7 @@
                     "
                     @selectanswer="selectOneAnswer"
                 />
+                <Sidebar :answeredID="question.userAnswer" />
             </v-col>
         </v-row>
         <v-row v-if="questions !== null" align="center" justify="space-between">
@@ -48,6 +49,7 @@
 </template>
 
 <script>
+import Sidebar from './Sidebar.vue'
 import SingleAnswer from './SingleAnswer.vue'
 import { OptionsQuery } from '../gql/queries/option'
 import { UpdateUserAnswerMutation } from '../gql/mutations/option'

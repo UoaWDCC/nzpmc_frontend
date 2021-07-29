@@ -34,7 +34,7 @@
                                 <v-list-item-title class="mr-2">
                                     Question {{ index + 1 }}
                                 </v-list-item-title>
-                                <v-icon v-if="index === 5">
+                                <v-icon v-if="answeredID !== null">
                                     check_circle
                                 </v-icon>
                                 <v-icon v-else color="white">circle </v-icon>
@@ -57,6 +57,7 @@ export default {
         quizID: String,
         sidebarLoaded: Function,
         questionIndex: Number,
+        answeredID: Number,
     },
 
     data() {
