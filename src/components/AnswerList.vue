@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar.vue'
 import SingleAnswer from './SingleAnswer.vue'
 import { OptionsQuery } from '../gql/queries/option'
 import { UpdateUserAnswerMutation } from '../gql/mutations/option'

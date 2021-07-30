@@ -30,10 +30,12 @@
                     >
                         <v-row>
                             <v-col class="d-flex justify-center">
-                                <v-icon v-if="index === 5" color="red">
-                                    emoji_flags
-                                </v-icon>
-                                <v-icon v-else color="black">
+                                <v-icon
+                                    @click="changeFlag(questions[index].flag)"
+                                    :color="
+                                        questions[index].flag ? 'red' : 'black'
+                                    "
+                                >
                                     emoji_flags
                                 </v-icon>
                                 <v-list-item-title class="mr-2">
@@ -56,6 +58,7 @@
 <script>
 import { QuestionsQuery } from '../gql/queries/question'
 import SubmissionConfirmation from './SubmissionConfirmation.vue'
+import { UpdateFlagMutation } from '../gql/mutations/flag'
 export default {
     components: {
         SubmissionConfirmation,
@@ -77,6 +80,18 @@ export default {
         selectQuestion(index) {
             this.selectedQuestionIndex = this.questions[index].id
             this.$emit('selectQuestion', index, this.selectedQuestionIndex)
+        },
+        changeFlag(input) {
+            this.$apollo.mutate({
+                mutation: UpdateFlagMutation,
+                variables: {
+                    input: {
+                        userQuizID: this.quizID,
+                        questionID: this.questionID,
+                        flag: !!input,
+                    },
+                },
+            })
         },
     },
     created() {
