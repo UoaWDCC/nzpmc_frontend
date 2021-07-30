@@ -31,7 +31,7 @@
                         <v-row>
                             <v-col class="d-flex justify-center">
                                 <v-icon
-                                    @click="changeFlag(questions[index].flag)"
+                                    @click="changeFlag(!!questions[index].flag)"
                                     :color="
                                         questions[index].flag ? 'red' : 'black'
                                     "
@@ -81,14 +81,15 @@ export default {
             this.selectedQuestionIndex = this.questions[index].id
             this.$emit('selectQuestion', index, this.selectedQuestionIndex)
         },
-        changeFlag(input) {
+        changeFlag(flagStatus) {
             this.$apollo.mutate({
                 mutation: UpdateFlagMutation,
                 variables: {
                     input: {
                         userQuizID: this.quizID,
                         questionID: this.questionID,
-                        flag: !!input,
+                        answerID: null,
+                        flag: !flagStatus,
                     },
                 },
             })

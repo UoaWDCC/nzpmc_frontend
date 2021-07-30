@@ -5,6 +5,12 @@ export const QuestionFragment = gql`
         id
         question
         imageURI
+        options {
+            id
+            option
+            created
+            modified
+        }
         flag
         created
         modified
