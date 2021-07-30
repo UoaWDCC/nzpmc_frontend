@@ -30,7 +30,12 @@
                     >
                         <v-row>
                             <v-col class="d-flex justify-center">
-                                <v-icon> emoji_flags </v-icon>
+                                <v-icon v-if="index === 5" color="red">
+                                    emoji_flags
+                                </v-icon>
+                                <v-icon v-else color="black">
+                                    emoji_flags
+                                </v-icon>
                                 <v-list-item-title class="mr-2">
                                     Question {{ index + 1 }}
                                 </v-list-item-title>
