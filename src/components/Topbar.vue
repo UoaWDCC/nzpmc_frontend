@@ -29,6 +29,7 @@ export default {
         timeWarning: 600,
         timeDanger: 300,
         currentTime: new Date().valueOf(),
+        timeDifference: 0,
     }),
     props: ['startTimestamp', 'duration', 'quizID'],
     computed: {
@@ -109,9 +110,9 @@ export default {
         startTimer(currentTime) {
             const component = this
             this.timerInterval = setInterval(function () {
-                const newTimeRemaining = Math.floor(
-                    (component.endTime - currentTime) / 1000,
-                )
+                const newTimeRemaining =
+                    Math.floor((component.endTime - currentTime) / 1000) +
+                    this.timeDifference
                 if (newTimeRemaining >= 0) {
                     component.timeRemaining = newTimeRemaining
                 }
