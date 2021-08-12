@@ -29,19 +29,12 @@ export default {
         timeWarning: 600,
         timeDanger: 300,
         currentTime: new Date().valueOf(),
+        serverTimeDifference: 0,
     }),
     props: ['startTimestamp', 'duration', 'quizID'],
     computed: {
         pollInterval() {
-            return Math.floor(this.timeRemaining / 6)
-        },
-        nextCalibrateTime() {
-            const startTime = new Date(this.startTimestamp).valueOf()
-            return (
-                startTime +
-                (this.duration - this.timeRemaining) +
-                Math.floor(this.timeRemaining / 6)
-            )
+            return Math.max(Math.floor(this.timeRemaining / 6), 1)
         },
         endTime() {
             // Calculates the UNIX timestamp when the time will be up
@@ -49,9 +42,10 @@ export default {
             return startTime + this.duration * 1000
         },
         formattedTimeRemaining() {
-            let hours = Math.floor(this.timeRemaining / 3600)
-            let minutes = Math.floor((this.timeRemaining % 3600) / 60)
-            let seconds = this.timeRemaining % 60
+            const time = this.timeRemaining + this.serverTimeDifference
+            let hours = Math.floor(time / 3600)
+            let minutes = Math.floor((time % 3600) / 60)
+            let seconds = time % 60
 
             if (hours < 10) {
                 hours = `0${hours}`
@@ -70,7 +64,7 @@ export default {
     },
     watch: {
         currentTime(val) {
-            this.startTimer(val)
+            this.serverTimeDifference = val - new Date.valueOf()
         },
         timeRemaining(val) {
             // Stop timer if finished
