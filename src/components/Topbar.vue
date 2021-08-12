@@ -1,14 +1,17 @@
 <template>
     <v-card elevation="2">
-        <v-toolbar>
+        <v-toolbar id="topbar" style="transition: height 0.5s">
             <v-btn icon @click="toggleSidebar()" class="d-md-none me-4">
-                <span class="material-icons">menu</span>
+                <span class="material-icons">
+                    {{ sidebarOpen ? 'close' : 'menu' }}
+                </span>
             </v-btn>
 
             <v-toolbar-title class="timer ps-0"
                 ><span class="d-none d-sm-inline-block">Time remaining:</span>
                 {{ formattedTimeRemaining }}</v-toolbar-title
             >
+
             <v-spacer />
 
             <SignOutMenu />
@@ -31,7 +34,7 @@ export default {
         currentTime: new Date().valueOf(),
         serverTimeDifference: 0,
     }),
-    props: ['startTimestamp', 'duration', 'quizID'],
+    props: ['startTimestamp', 'duration', 'sidebarOpen'],
     computed: {
         pollInterval() {
             return Math.max(Math.floor(this.timeRemaining / 6), 1)
