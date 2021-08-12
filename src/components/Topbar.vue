@@ -103,9 +103,9 @@ export default {
         startTimer(currentTime) {
             const component = this
             this.timerInterval = setInterval(function () {
-                const newTimeRemaining = Math.floor(
-                    (component.endTime - currentTime) / 1000,
-                )
+                const newTimeRemaining =
+                    Math.floor((component.endTime - currentTime) / 1000) +
+                    this.timeDifference
                 if (newTimeRemaining >= 0) {
                     component.timeRemaining = newTimeRemaining
                 }
