@@ -33,13 +33,19 @@ const routes = [
         },
     },
     {
-        path: '/exam',
+        path: '/exam/:quizId',
         name: 'Exam',
         component: Exam,
         meta: {
             title: 'Exam - NZPMC',
             authRequired: true,
         },
+        // children: [
+        //     {
+        //         path: ':quizId',
+        //         component: SingleQuestion,
+        //     },
+        // ],
     },
     {
         path: '/submission',
