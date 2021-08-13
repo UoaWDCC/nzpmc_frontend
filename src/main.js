@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify'
 import router from './router'
 import VueLaTeX2JS from './plugins/latex'
 import 'material-icons/iconfont/material-icons.css'
+import 'material-icons/css/material-icons.min.css'
 import firebase from 'firebase'
 import { createProvider } from './vue-apollo'
 
@@ -17,12 +18,14 @@ const AUTH_TOKEN = 'apollo-token'
 let firebaseLoaded = false
 firebase.auth().onAuthStateChanged(async function (user) {
     // Update token to be used for backend authentication
-    if (user && typeof localStorage !== 'undefined') {
+    if (user) {
+        // User has logged in, add token to storage
         localStorage.setItem(
             AUTH_TOKEN,
             await firebase.auth().currentUser.getIdToken(true),
         )
     } else if (typeof localStorage !== 'undefined') {
+        // User has logged out, remove token from storage
         localStorage.removeItem(AUTH_TOKEN)
     }
 
