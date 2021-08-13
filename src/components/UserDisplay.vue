@@ -1,7 +1,7 @@
 <template>
     <v-component v-if="searched === null">
         <ol v-for="user in users" :key="user">
-            <v-card class="d-flex my-2 py-3 px-10 ml-4 mr-12">
+            <v-card class="d-flex my-2 py-3 px-10 mx-12">
                 {{ user }}
                 <v-btn icon small>
                     <v-icon class="material-icons">edit</v-icon>
@@ -13,7 +13,7 @@
         </ol>
     </v-component>
     <v-component v-else>
-        <v-card class="d-flex my-2 py-3 px-10 ml-4 mr-12">
+        <v-card class="d-flex my-2 py-3 px-10 mx-12">
             {{ searched }}
             <v-btn icon small>
                 <v-icon class="material-icons">edit</v-icon>

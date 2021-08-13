@@ -1,6 +1,6 @@
 <template>
     <v-row>
-        <v-col class="col-12">
+        <v-col>
             <UserSearchBar />
             <UserDisplay />
         </v-col>
