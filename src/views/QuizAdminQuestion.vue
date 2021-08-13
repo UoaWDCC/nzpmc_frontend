@@ -27,7 +27,9 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <h2 class="text-h6 mb-4">Answers</h2>
+                    <h2 class="mb-4">
+                        <span style="font-weight: normal">Answers</span>
+                    </h2>
                     <v-radio-group
                         v-model="correctAnswer"
                         :rules="[rules.required]"

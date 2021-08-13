@@ -56,7 +56,7 @@
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col class="d-flex justify-space-around">
+                    <v-col class="d-flex justify-space-around mt-3">
                         <v-btn
                             type="submit"
                             color="primary"

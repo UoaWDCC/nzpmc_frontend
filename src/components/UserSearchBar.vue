@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-card class="mt-8 mb-15">
         <v-toolbar>
             <v-toolbar-title>Start typing to search...</v-toolbar-title>
             <v-autocomplete
@@ -8,6 +8,11 @@
                 :items="users"
                 :search-input.sync="search"
                 cache-items
+                solo
+                clearable
+                filled
+                dense
+                chips
                 class="mx-4"
                 flat
                 hide-no-data
@@ -16,11 +21,12 @@
             ></v-autocomplete>
             <CreateUser />
         </v-toolbar>
-    </v-container>
+    </v-card>
 </template>
 
 <script>
 import CreateUser from '../components/CreateUser.vue'
+export let searchedUser
 
 export default {
     data() {
