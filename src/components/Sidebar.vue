@@ -36,6 +36,7 @@
                                             index,
                                             !!questions[index].flag,
                                         )
+                                        cancelBubble(event)
                                     "
                                     :color="
                                         questions[index].flag ? 'red' : 'black'
@@ -79,6 +80,7 @@ export default {
         return {
             questions: null,
             selectedQuestionIndex: 0,
+            event: '',
         }
     },
     methods: {
@@ -98,6 +100,11 @@ export default {
                     },
                 },
             })
+        },
+        cancelBubble(e) {
+            const evt = e ? e : window.event
+            if (evt.stopPropagation) evt.stopPropagation()
+            if (evt.cancelBubble !== null) evt.cancelBubble = true
         },
     },
     created() {
