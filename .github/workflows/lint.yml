@@ -11,12 +11,12 @@ jobs:
             - name: Check out Git repository
               uses: actions/checkout@v2
 
-            # - uses: actions/cache@v2
-            #   with:
-            #       path: ~/.npm
-            #       key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-            #       restore-keys: |
-            #           ${{ runner.os }}-node-
+            - uses: actions/cache@v2
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node14-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node14-
 
             - name: Set up Node.js
               uses: actions/setup-node@v2
