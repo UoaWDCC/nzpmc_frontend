@@ -1,15 +1,15 @@
 import gql from 'graphql-tag'
 import { OptionFragment } from '../fragments/option'
 import {
-    QuestionFragment,
-    QuestionWithoutFlagFragment,
+    UserQuizQuestionFragment,
+    UserQuizQuestionWithoutFlagFragment,
 } from '../fragments/question'
 
 export const QuestionsQuery = gql`
     query QuestionsQuery($quizID: ID!) {
         userQuiz(quizID: $quizID) {
             questions {
-                ...QuestionFragment
+                ...UserQuizQuestionFragment
                 options {
                     ...OptionFragment
                 }
@@ -20,16 +20,16 @@ export const QuestionsQuery = gql`
         }
     }
     ${OptionFragment}
-    ${QuestionFragment}
+    ${UserQuizQuestionFragment}
 `
 
 export const QuestionQuery = gql`
     query QuestionQuery($quizID: ID!, $questionID: ID!) {
         userQuiz(quizID: $quizID) {
             question(id: $questionID) {
-                ...QuestionWithoutFlagFragment
+                ...UserQuizQuestionWithoutFlagFragment
             }
         }
     }
-    ${QuestionWithoutFlagFragment}
+    ${UserQuizQuestionWithoutFlagFragment}
 `

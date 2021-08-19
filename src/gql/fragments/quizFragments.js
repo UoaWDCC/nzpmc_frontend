@@ -1,12 +1,12 @@
 import gql from 'graphql-tag'
 
-export const UserQuizFragment = gql`
-    fragment UserQuizFragment on UserQuiz {
+export const QuizFragment = gql`
+    fragment QuizFragment on Quiz {
         id
         name
         description
-        score
         duration
+        numOfQuestions
         startTime
         endTime
         created
