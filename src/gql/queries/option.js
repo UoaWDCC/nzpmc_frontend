@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { OptionFragment } from '../fragments/option'
+import { OptionFragment } from '../fragments'
 
 export const OptionsQuery = gql`
     query OptionsQuery($quizID: ID!, $questionID: ID!) {

@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { OptionFragment } from '../fragments/option'
+import { OptionFragment } from '../fragments'
 import {
     UserQuizQuestionFragment,
     UserQuizQuestionWithoutFlagFragment,

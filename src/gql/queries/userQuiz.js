@@ -1,7 +1,9 @@
 import gql from 'graphql-tag'
-import { UserQuizFragment } from '../fragments/userQuiz'
-import { OptionFragment } from '../fragments/option'
-import { UserQuizQuestionFragment } from '../fragments/question'
+import {
+    UserQuizFragment,
+    OptionFragment,
+    UserQuizQuestionFragment,
+} from '../fragments'
 
 export const UserQuizzesQuery = gql`
     query UserQuizzesQuery {
