@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { SubmitUserQuizMutation } from '../gql/mutations/submission'
+import { SubmitUserQuizQuestionsMutation } from '../gql/mutations'
 export default {
     props: {
         quizID: String,
@@ -57,7 +57,7 @@ export default {
             this.submitting = true
             this.$apollo
                 .mutate({
-                    mutation: SubmitUserQuizMutation,
+                    mutation: SubmitUserQuizQuestionsMutation,
                     variables: {
                         input: {
                             userQuizID: this.quizID,

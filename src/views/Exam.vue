@@ -118,7 +118,7 @@ import Sidebar from '../components/Sidebar.vue'
 import Topbar from '../components/Topbar.vue'
 import SingleQuestion from './../components/SingleQuestion.vue'
 import AnswerList from './../components/AnswerList.vue'
-import { UserQuizzesQuery } from '../gql/queries/userQuiz'
+import { UserQuizzesQuery } from '../gql/queries'
 
 export default {
     components: {

@@ -62,9 +62,9 @@
     </v-navigation-drawer>
 </template>
 <script>
-import { QuestionsQuery } from '../gql/queries/question'
+import { UserQuizQuestionsOptionQuery } from '../gql/queries'
 import SubmissionConfirmation from './SubmissionConfirmation.vue'
-import { UpdateFlagMutation } from '../gql/mutations/flag'
+import { EditUserAnswerMutation } from '../gql/mutations'
 export default {
     components: {
         SubmissionConfirmation,
@@ -90,12 +90,11 @@ export default {
         },
         changeFlag(index, flagStatus) {
             this.$apollo.mutate({
-                mutation: UpdateFlagMutation,
+                mutation: EditUserAnswerMutation,
                 variables: {
                     input: {
                         userQuizID: this.quizID,
                         questionID: this.questions[index].id,
-                        answerID: null,
                         flag: !flagStatus,
                     },
                 },
@@ -112,7 +111,7 @@ export default {
     },
     apollo: {
         questions: {
-            query: QuestionsQuery,
+            query: UserQuizQuestionsOptionQuery,
             variables() {
                 return {
                     quizID: this.quizID,

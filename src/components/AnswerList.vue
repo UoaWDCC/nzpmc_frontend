@@ -50,9 +50,11 @@
 
 <script>
 import SingleAnswer from './SingleAnswer.vue'
-import { OptionsQuery } from '../gql/queries/option'
-import { UpdateUserAnswerMutation } from '../gql/mutations/option'
-import { QuestionsQuery } from '../gql/queries/question'
+import {
+    UserQuizQuestionOptionQuery,
+    UserQuizQuestionsOptionQuery,
+} from '../gql/queries'
+import { EditUserAnswerMutation } from '../gql/mutations'
 
 export default {
     components: {
@@ -93,7 +95,7 @@ export default {
                 ? (this.question.userAnswer.id = ID)
                 : (this.question.userAnswer = { id: ID })
             this.$apollo.mutate({
-                mutation: UpdateUserAnswerMutation,
+                mutation: EditUserAnswerMutation,
                 variables: {
                     input: {
                         userQuizID: this.quizID,
@@ -106,7 +108,7 @@ export default {
     },
     apollo: {
         question: {
-            query: OptionsQuery,
+            query: UserQuizQuestionOptionQuery,
             variables() {
                 return {
                     quizID: this.quizID,
@@ -118,7 +120,7 @@ export default {
             },
         },
         questions: {
-            query: QuestionsQuery,
+            query: UserQuizQuestionsOptionQuery,
             variables() {
                 return {
                     quizID: this.quizID,

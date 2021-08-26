@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-import { QuestionQuery } from '../gql/queries/question'
+import { UserQuizQuestionsOptionQuery } from '../gql/queries'
 export default {
     props: {
         questionID: String,
@@ -33,7 +33,7 @@ export default {
     },
     apollo: {
         question: {
-            query: QuestionQuery,
+            query: UserQuizQuestionsOptionQuery,
             variables() {
                 return {
                     quizID: this.quizID,
