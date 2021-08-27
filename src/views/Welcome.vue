@@ -91,7 +91,6 @@
 import SignOutMenu from '../components/SignOutMenu.vue'
 import { EditQuizMutation } from '../gql/mutations/userQuiz.js'
 import { UserQuizzesQuery } from '../gql/queries/userQuiz'
-import router from '../router'
 
 export default {
     components: {
@@ -121,7 +120,10 @@ export default {
                     },
                 },
             })
-            router.push('/exam')
+            this.$router.push({
+                name: 'Exam',
+                params: { quizId: this.userQuiz.id },
+            })
         },
     },
 }
