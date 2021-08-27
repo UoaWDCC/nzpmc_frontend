@@ -4,9 +4,7 @@
             <v-toolbar-title>Start typing to search...</v-toolbar-title>
             <v-autocomplete
                 v-model="searchedUser"
-                :loading="loading"
                 :items="users"
-                :search-input.sync="search"
                 cache-items
                 solo
                 clearable
@@ -26,7 +24,6 @@
 
 <script>
 import CreateUser from '../components/CreateUser.vue'
-export let searchedUser
 
 export default {
     data() {
