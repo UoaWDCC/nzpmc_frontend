@@ -30,7 +30,6 @@ export default {
     },
     watch: {
         search(val) {
-            console.log('emitting')
             this.$emit('search', val)
         },
     },

@@ -52,6 +52,7 @@
                         <v-btn
                             color="primary"
                             :disabled="!formIsValid"
+                            :loading="creating"
                             @click="create"
                         >
                             <v-icon left class="material-icons">
@@ -88,21 +89,26 @@ export default {
             email: null,
             userForm: null,
             formIsValid: null,
+            creating: false,
             rules: {
                 required: (value) => !!value || 'Required.',
             },
         }
     },
     methods: {
-        cancel() {
+        reset() {
             this.firstName = null
             this.lastName = null
             this.yearLevel = null
             this.email = null
-            this.dialog = false
             this.$refs.userForm.resetValidation()
         },
+        cancel() {
+            this.dialog = false
+            this.reset()
+        },
         create() {
+            this.creating = true
             this.$apollo
                 .mutate({
                     mutation: AddUserMutation,
@@ -120,7 +126,11 @@ export default {
                         store.writeQuery({ query: usersQuery, data })
                     },
                 })
-                .then((this.dialog = false))
+                .then(() => {
+                    this.dialog = false
+                    this.creating = false
+                    this.reset()
+                })
         },
     },
 }
