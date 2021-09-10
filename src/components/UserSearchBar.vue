@@ -26,14 +26,22 @@
 import CreateUser from '../components/CreateUser.vue'
 
 export default {
+    props: {
+        setSearchedUser: Function,
+    },
+    components: {
+        CreateUser,
+    },
     data() {
         return {
             users: ['Daniel', 'Will', 'CZ', 'Ruby', 'Matthew', 'Alex', 'Lance'],
             searchedUser: null,
         }
     },
-    components: {
-        CreateUser,
+    watch: {
+        searchedUser(val) {
+            this.setSearchedUser(val)
+        },
     },
 }
 </script>

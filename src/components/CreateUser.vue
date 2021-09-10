@@ -100,6 +100,7 @@ export default {
             this.yearLevel = null
             this.email = null
             this.dialog = false
+            this.$refs.userForm.resetValidation()
         },
         create() {
             this.$apollo
