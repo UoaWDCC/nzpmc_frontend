@@ -13,8 +13,17 @@
                 <v-row dense>
                     <v-col class="col">
                         <v-text-field
-                            label="Name"
-                            v-model="userName"
+                            label="First Name"
+                            v-model="firstName"
+                            :rules="[rules.required]"
+                        ></v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row dense>
+                    <v-col>
+                        <v-text-field
+                            label="Last Name"
+                            v-model="lastName"
                             :rules="[rules.required]"
                         ></v-text-field>
                     </v-col>
@@ -23,7 +32,7 @@
                     <v-col>
                         <v-text-field
                             label="Email"
-                            v-model="userEmail"
+                            v-model="email"
                             :rules="[rules.required]"
                         ></v-text-field>
                     </v-col>
@@ -33,34 +42,17 @@
                         <v-text-field
                             label="Year Level"
                             type="number"
-                            v-model="userYearLevel"
+                            v-model="yearLevel"
                             :rules="[rules.required]"
                         ></v-text-field>
-                    </v-col>
-                </v-row>
-                <v-row dense>
-                    <v-col>
-                        <v-text-field
-                            label="Password (optional)"
-                            v-model="userPassword"
-                        ></v-text-field>
-                    </v-col>
-                </v-row>
-                <v-row dense>
-                    <v-col>
-                        <v-select
-                            :items="quizzes"
-                            v-model="associatedQuiz"
-                            label="Associated Quiz (optional)"
-                        ></v-select>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col class="d-flex justify-space-around mt-3">
                         <v-btn
-                            type="submit"
                             color="primary"
                             :disabled="!formIsValid"
+                            @click="create"
                         >
                             <v-icon left class="material-icons">
                                 create
@@ -83,16 +75,17 @@
 </style>
 
 <script>
+import { AddUserMutation } from '../gql/mutations/user'
+import { usersQuery } from '../gql/queries/user'
+
 export default {
     data() {
         return {
             dialog: false,
-            quizzes: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-            userName: null,
-            userPassword: null,
-            userYearLevel: null,
-            userEmail: null,
-            associatedQuiz: null,
+            firstName: null,
+            lastName: null,
+            yearLevel: null,
+            email: null,
             userForm: null,
             formIsValid: null,
             rules: {
@@ -102,12 +95,31 @@ export default {
     },
     methods: {
         cancel() {
-            this.userName = null
-            this.userPassword = null
-            this.userYearLevel = null
-            this.userEmail = null
-            this.associatedQuiz = null
+            this.firstName = null
+            this.lastName = null
+            this.yearLevel = null
+            this.email = null
             this.dialog = false
+        },
+        create() {
+            this.$apollo
+                .mutate({
+                    mutation: AddUserMutation,
+                    variables: {
+                        addUserInput: {
+                            firstName: this.firstName,
+                            lastName: this.lastName,
+                            email: this.email,
+                            yearLevel: this.yearLevel,
+                        },
+                    },
+                    update: (store, { data: { addUser } }) => {
+                        const data = store.readQuery({ query: usersQuery })
+                        data.users.push(addUser)
+                        store.writeQuery({ query: usersQuery, data })
+                    },
+                })
+                .then((this.dialog = false))
         },
     },
 }

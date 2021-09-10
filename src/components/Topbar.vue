@@ -118,7 +118,7 @@ export default {
             clearInterval(this.timerInterval)
         },
     },
-    appolo: {
+    apollo: {
         currentTime: {
             query: CurrentTimeQuery,
             pollInterval() {

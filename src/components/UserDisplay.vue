@@ -16,7 +16,7 @@
                             <v-row>
                                 <v-col cols="12" sm="6" md="4">
                                     <v-text-field
-                                        v-model="editedItem.name"
+                                        v-model="editedItem.displayName"
                                         label="Name"
                                     ></v-text-field>
                                 </v-col>
@@ -28,14 +28,8 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="4">
                                     <v-text-field
-                                        v-model="editedItem.year"
+                                        v-model="editedItem.yearLevel"
                                         label="Year Level"
-                                    ></v-text-field>
-                                </v-col>
-                                <v-col cols="12" sm="6" md="4">
-                                    <v-text-field
-                                        v-model="editedItem.quizzes"
-                                        label="Associated Quiz(s)"
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
@@ -43,7 +37,7 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" text @click="close">
+                        <v-btn color="blue darken-1" text @click="closeEdit">
                             Cancel
                         </v-btn>
                         <v-btn color="blue darken-1" text @click="save">
@@ -79,13 +73,14 @@
             </v-icon>
             <v-icon small @click="deleteItem(item)"> delete </v-icon>
         </template>
-        <template v-slot:no-data>
-            <v-btn color="primary" @click="initialize"> Reset </v-btn>
-        </template>
     </v-data-table>
 </template>
 
 <script>
+import { usersQuery } from '../gql/queries/user'
+import { EditUserMutation } from '../gql/mutations/user'
+import { DeleteUserMutation } from '../gql/mutations/user'
+
 export default {
     data: () => ({
         dialogEdit: false,
@@ -94,45 +89,23 @@ export default {
             {
                 text: 'Name',
                 align: 'start',
-                value: 'name',
+                value: 'displayName',
             },
             { text: 'Email', value: 'email' },
-            { text: 'Year Level', value: 'year' },
-            { text: 'Associated Quiz(s)', value: 'quizzes' },
+            { text: 'Year Level', value: 'yearLevel' },
             { text: 'Actions', value: 'actions', sortable: false },
         ],
-        users: [
-            {
-                name: 'Daniel',
-                email: 'daniel@gmail.com',
-                year: 6,
-                quizzes: 3,
-            },
-            {
-                name: 'Will',
-                email: 'will@gmail.com',
-                year: 8,
-                quizzes: 24,
-            },
-            {
-                name: 'CZ',
-                email: 'cz@gmail.com',
-                year: 12,
-                quizzes: 6,
-            },
-        ],
+        users: [],
         editedIndex: -1,
         editedItem: {
             name: '',
             email: '',
             year: 0,
-            quizzes: 0,
         },
         defaultItem: {
             name: '',
             email: '',
             year: 0,
-            quizzes: 0,
         },
     }),
 
@@ -143,10 +116,6 @@ export default {
         dialogDelete(val) {
             val || this.closeDelete()
         },
-    },
-
-    created() {
-        this.initialize()
     },
 
     methods: {
@@ -190,6 +159,11 @@ export default {
                 this.users.push(this.editedItem)
             }
             this.closeEdit()
+        },
+    },
+    apollo: {
+        users: {
+            query: usersQuery,
         },
     },
 }
