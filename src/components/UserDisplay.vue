@@ -2,6 +2,7 @@
     <v-data-table
         :headers="headers"
         :items="users"
+        :search="search"
         sort-by="displayName"
         class="elevation-1"
         show-group-by
@@ -92,6 +93,9 @@ import { EditUserMutation } from '../gql/mutations/user'
 // import { DeleteUserMutation } from '../gql/mutations/user'
 
 export default {
+    props: {
+        search: String,
+    },
     data: () => ({
         dialogEdit: false,
         dialogDelete: false,

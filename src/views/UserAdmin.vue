@@ -1,8 +1,8 @@
 <template>
     <v-row>
         <v-col>
-            <UserSearchBar />
-            <UserDisplay />
+            <UserSearchBar @search="setSearch" />
+            <UserDisplay :search="search" />
         </v-col>
     </v-row>
 </template>
@@ -15,6 +15,16 @@ export default {
     components: {
         UserSearchBar,
         UserDisplay,
+    },
+    data() {
+        return {
+            search: null,
+        }
+    },
+    methods: {
+        setSearch(searchString) {
+            this.search = searchString
+        },
     },
 }
 </script>

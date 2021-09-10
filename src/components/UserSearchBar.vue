@@ -2,21 +2,14 @@
     <v-card class="mt-8 mb-15">
         <v-toolbar>
             <v-toolbar-title>Start typing to search...</v-toolbar-title>
-            <v-autocomplete
-                v-model="searchedUser"
-                :items="users"
-                cache-items
-                solo
-                clearable
-                filled
-                dense
-                chips
+            <v-text-field
                 class="mx-4"
-                flat
-                hide-no-data
+                v-model="search"
+                append-icon="mdi-magnify"
+                label="Search"
+                single-line
                 hide-details
-                label="User"
-            ></v-autocomplete>
+            ></v-text-field>
             <CreateUser />
         </v-toolbar>
     </v-card>
@@ -26,21 +19,19 @@
 import CreateUser from '../components/CreateUser.vue'
 
 export default {
-    props: {
-        setSearchedUser: Function,
-    },
     components: {
         CreateUser,
     },
     data() {
         return {
             users: ['Daniel', 'Will', 'CZ', 'Ruby', 'Matthew', 'Alex', 'Lance'],
-            searchedUser: null,
+            search: null,
         }
     },
     watch: {
-        searchedUser(val) {
-            this.setSearchedUser(val)
+        search(val) {
+            console.log('emitting')
+            this.$emit('search', val)
         },
     },
 }
