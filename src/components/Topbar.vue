@@ -67,7 +67,7 @@ export default {
     },
     watch: {
         currentTime(val) {
-            this.serverTimeDifference = val - new Date.valueOf()
+            this.serverTimeDifference = val - new Date().valueOf()
         },
         timeRemaining(val) {
             // Stop timer if finished

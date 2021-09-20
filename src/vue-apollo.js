@@ -52,7 +52,7 @@ const defaultOptions = {
         // Check if auth token in local storage is nearing expiration
         const jwt = localStorage[tokenName]
         const payload = jwt.split('.')[1]
-        const exp = JSON.parse(atob(payload)).exp
+        const exp = JSON.parse(Buffer.from(payload, 'base64')).exp
         const now = new Date().valueOf() / 1000
 
         if (now + 10 >= exp) {

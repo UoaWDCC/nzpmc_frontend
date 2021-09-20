@@ -9,7 +9,7 @@
         <v-list>
             <v-list-item-group>
                 <v-list-item
-                    v-if="isAdmin()"
+                    v-if="isAdmin"
                     to="/admin"
                     style="min-width: 128px"
                 >
@@ -27,19 +27,25 @@
 import firebase from 'firebase'
 import { onLogout } from '../vue-apollo'
 export default {
+    data() {
+        return {
+            isAdmin: false,
+        }
+    },
     methods: {
         signOut() {
             firebase.auth().signOut()
             onLogout(this.$apollo.provider.defaultClient)
         },
-        async isAdmin() {
+        async setIsAdmin() {
             // Check if auth token shows admin access
             const jwt = await firebase.auth().currentUser.getIdToken(true)
             const payload = jwt.split('.')[1]
-            const isAdmin = JSON.parse(atob(payload)).admin
-
-            return isAdmin
+            this.isAdmin = JSON.parse(Buffer.from(payload, 'base64')).admin
         },
+    },
+    async mounted() {
+        this.admin = await this.setIsAdmin()
     },
 }
 </script>

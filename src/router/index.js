@@ -165,7 +165,7 @@ router.beforeEach(async (to, from, next) => {
             // Check if auth token shows admin access
             const jwt = await firebase.auth().currentUser.getIdToken(true)
             const payload = jwt.split('.')[1]
-            const isAdmin = JSON.parse(atob(payload)).admin
+            const isAdmin = JSON.parse(Buffer.from(payload, 'base64')).admin
 
             if (isAdmin) {
                 next()
