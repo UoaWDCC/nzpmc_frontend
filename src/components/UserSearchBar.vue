@@ -10,7 +10,7 @@
                 single-line
                 hide-details
             ></v-text-field>
-            <CreateUser />
+            <CreateUser @notification="notification" />
         </v-toolbar>
     </v-card>
 </template>
@@ -24,13 +24,17 @@ export default {
     },
     data() {
         return {
-            users: ['Daniel', 'Will', 'CZ', 'Ruby', 'Matthew', 'Alex', 'Lance'],
             search: null,
         }
     },
     watch: {
         search(val) {
             this.$emit('search', val)
+        },
+    },
+    methods: {
+        notification(firstName, lastName) {
+            this.$emit('notification', firstName, lastName)
         },
     },
 }

@@ -105,6 +105,7 @@ export default {
         },
         cancel() {
             this.dialog = false
+            this.creating = false
             this.reset()
         },
         create() {
@@ -129,6 +130,7 @@ export default {
                 .then(() => {
                     this.dialog = false
                     this.creating = false
+                    this.$emit('notification', this.firstName, this.lastName)
                     this.reset()
                 })
         },
