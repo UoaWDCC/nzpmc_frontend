@@ -94,6 +94,8 @@
 </template>
 
 <script>
+import { ImageMutation } from '@/gql/mutations/adminQuiz'
+
 export default {
     data() {
         return {
@@ -121,7 +123,33 @@ export default {
     methods: {
         // Upload the file
         upload() {
+            this.success = null
+            this.error = null
             this.loading = true
+
+            console.log(this.file)
+
+            this.$apollo
+                .mutate({
+                    mutation: ImageMutation,
+                    variables: {
+                        questionID: this.$route.params.questionId,
+                        image: this.file,
+                    },
+                    context: {
+                        hasUpload: true,
+                    },
+                })
+                .then(() => {
+                    // Result
+                    this.loading = false
+                    this.success = 'Question successfully uploaded.'
+                })
+                .catch((error) => {
+                    // Error
+                    this.loading = false
+                    this.error = error.message
+                })
         },
     },
 }
