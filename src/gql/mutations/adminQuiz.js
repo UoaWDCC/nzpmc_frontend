@@ -66,3 +66,11 @@ export const EditAnswerMutation = gql`
         }
     }
 `
+
+export const ImageMutation = gql`
+    mutation ImageMutation($input: ImageUploadInput!) {
+        image(input: $input) {
+            imageURI
+        }
+    }
+`
