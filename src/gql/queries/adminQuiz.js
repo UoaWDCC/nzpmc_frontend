@@ -50,3 +50,11 @@ export const AdminQuizQuestionDetailsQuery = gql`
         }
     }
 `
+
+export const ImageQuery = gql`
+    query ImageQuery($questionId: ID!) {
+        image(questionID: $questionId) {
+            imageURI
+        }
+    }
+`

@@ -3,9 +3,15 @@
         <h2 class="text-h5 mb-4">Images</h2>
 
         <div class="d-flex flex-wrap align-stretch" style="gap: 16px">
-            <v-sheet rounded outlined style="max-width: 150px">
+            <v-sheet
+                rounded
+                outlined
+                style="max-width: 150px"
+                v-for="(image, index) in images"
+                :key="index"
+            >
                 <img
-                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                    :src="image.imageURI"
                     style="width: 150px; height: 150px; object-fit: cover"
                 />
 
@@ -49,19 +55,9 @@
                         </div>
 
                         <v-alert
-                            type="success"
-                            v-if="showSuccess"
-                            class="my-3"
-                            @click="showSuccess = false"
-                            style="cursor: pointer"
-                        >
-                            {{ success }}
-                        </v-alert>
-
-                        <v-alert
                             type="error"
                             v-if="showError"
-                            class="my-3"
+                            class="my-3 mx-4"
                             @click="showError = false"
                             style="cursor: pointer"
                         >
@@ -95,6 +91,7 @@
 
 <script>
 import { ImageMutation } from '@/gql/mutations/adminQuiz'
+import { ImageQuery } from '@/gql/queries/adminQuiz'
 
 export default {
     data() {
@@ -111,45 +108,62 @@ export default {
     },
 
     watch: {
-        success(val) {
-            this.showSuccess = !!val
-        },
-
         error(val) {
             this.showError = !!val
+        },
+
+        dialog() {
+            // Reset form
+            this.file = null
+            this.error = null
         },
     },
 
     methods: {
         // Upload the file
         upload() {
-            this.success = null
             this.error = null
             this.loading = true
-
-            console.log(this.file)
 
             this.$apollo
                 .mutate({
                     mutation: ImageMutation,
                     variables: {
-                        questionID: this.$route.params.questionId,
-                        image: this.file,
+                        input: {
+                            questionID: this.$route.params.questionId,
+                            image: this.file,
+                        },
                     },
                     context: {
                         hasUpload: true,
                     },
                 })
                 .then(() => {
-                    // Result
-                    this.loading = false
-                    this.success = 'Question successfully uploaded.'
+                    this.dialog = false
+                    this.$apollo.queries.images.refetch() // Refetch images
                 })
                 .catch((error) => {
                     // Error
-                    this.loading = false
                     this.error = error.message
                 })
+                .finally(() => {
+                    // Finally
+                    this.loading = false
+                })
+        },
+    },
+
+    apollo: {
+        images: {
+            query: ImageQuery,
+            variables() {
+                return {
+                    questionId: this.$route.params.questionId,
+                }
+            },
+            update: (data) => {
+                return data.image
+            },
         },
     },
 }
