@@ -82,8 +82,8 @@ export default {
         this.routeTransition =
             from.params.questionID === undefined
                 ? 'Transition'
-                : to.params.questionID > from.params.questionID // eslint-disable-next-line prettier-vue-scorpionknifes/prettier
-                ? VSlideXReverseTransition // eslint-disable-next-line prettier-vue-scorpionknifes/prettier
+                : to.params.questionID > from.params.questionID // eslint-disable-next-line prettier-vue-scorpionknifes/prettier, indent
+                ? VSlideXReverseTransition // eslint-disable-next-line prettier-vue-scorpionknifes/prettier, indent
                 : VSlideXTransition
         next()
     },
